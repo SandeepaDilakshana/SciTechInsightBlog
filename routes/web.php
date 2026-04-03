@@ -21,7 +21,7 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 
-Route::controller(PostsController::class)->prefix('admin/post')->group(function(){
+Route::middleware('auth')->controller(PostsController::class)->prefix('admin/post')->group(function(){
     Route::get('/create', 'create')->name('post.create');
     Route::post('/store', 'store')->name('post.store');
 });
