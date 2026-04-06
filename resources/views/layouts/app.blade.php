@@ -45,6 +45,12 @@
                         </li>
                         
                         <li class="p-2">
+                            <a href="{{ route('category.create') }}" class="block">
+                                Create new Category
+                            </a>
+                        </li>
+                        
+                        <li class="p-2">
                             <a href="{{ route('post.create') }}" class="block">
                                 Create new post
                             </a>
