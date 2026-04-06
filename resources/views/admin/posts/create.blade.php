@@ -28,7 +28,18 @@
                     <label for="title" class="text-sm font-semibold text-gray-600">Title</label>
                     <input type="text" name="title" id="title"
                         class="px-4 py-2 transition border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                        placeholder="Enter post title">
+                        placeholder="Enter post title" required>
+                </div>
+
+                <div class="flex flex-col space-y-1">
+                    <label for="category" class="text-sm font-semibold text-gray-600">Select Category</label>
+                    <select name="category_id" id="category"
+                        class="px-4 py-2 transition bg-white border border-gray-300 rounded-md cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <option value="" disabled selected>Choose a category</option>
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                    </select>
                 </div>
 
                 <div class="flex flex-col space-y-1">
