@@ -33,6 +33,7 @@ class PostsController extends Controller
             'title' => 'required',
             'featured' => 'required|image',
             'content' => 'required',
+            'category_id' => 'required'
         ]);
 
         $post = new Post;
@@ -40,6 +41,7 @@ class PostsController extends Controller
         $post->title = $request->title; // fix here
         $post->featured = $request->featured;
         $post->content = $request->content;
+        $post->category_id = $request->category_id;
         $post->save();
 
         return redirect()->back();
