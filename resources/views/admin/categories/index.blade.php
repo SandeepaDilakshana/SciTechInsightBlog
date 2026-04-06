@@ -1,0 +1,47 @@
+@extends('layouts.app')
+
+@section('content')
+    <div class="mt-5 overflow-hidden bg-white border border-gray-200 shadow sm:rounded-lg">
+    <div class="p-4 border-b border-gray-200 bg-gray-50">
+        <h3 class="text-lg font-bold text-gray-700">Categories</h3>
+    </div>
+    <div class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-100">
+                <tr>
+                    <th class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                        Category name
+                    </th>
+                    <th class="px-6 py-3 text-xs font-medium tracking-wider text-center text-gray-500 uppercase">
+                        Editing
+                    </th>
+                    <th class="px-6 py-3 text-xs font-medium tracking-wider text-center text-gray-500 uppercase">
+                        Deleting
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+                @foreach ($categories as $category)
+                    <tr class="transition-colors hover:bg-gray-50">
+                        <td class="px-6 py-4 text-sm text-gray-900 whitespace-nowrap">
+                            {{ $category->name }}
+                        </td>
+                        <td class="px-6 py-4 text-center whitespace-nowrap">
+                            <a href="{{ route('category.edit', ['id' => $category->id]) }}" 
+                               class="inline-flex items-center px-3 py-1 text-xs font-medium text-white transition-colors bg-blue-500 rounded hover:bg-blue-600">
+                                Edit
+                            </a>
+                        </td>
+                        <td class="px-6 py-4 text-center whitespace-nowrap">
+                            <a href="{{ route('category.delete', ['id' => $category->id]) }}" 
+                               class="inline-flex items-center px-3 py-1 text-xs font-medium text-white transition-colors bg-red-500 rounded hover:bg-red-600">
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+</div>
+@endsection

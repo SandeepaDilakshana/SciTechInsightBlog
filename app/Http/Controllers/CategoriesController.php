@@ -3,17 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use App\Models\Post;
 use Illuminate\Http\Request;
 
-class PostsController extends Controller
+class CategoriesController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return view('admin.categories.index')->with('categories',Category::all());
     }
 
     /**
@@ -21,7 +20,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view('admin.posts.create')->with('categories', Category::all());
+        return view('admin.categories.create');
     }
 
     /**
@@ -30,17 +29,13 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required',
-            'featured' => 'required|image',
-            'content' => 'required',
+            'name' => 'required|string'
         ]);
 
-        $post = new Post;
+        $category = new Category;
 
-        $post->title = $request->title; // fix here
-        $post->featured = $request->featured;
-        $post->content = $request->content;
-        $post->save();
+        $category->name = $request->name;
+        $category->save();
 
         return redirect()->back();
     }

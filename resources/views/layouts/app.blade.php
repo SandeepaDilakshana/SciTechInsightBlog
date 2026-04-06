@@ -1,36 +1,92 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title> @yield('title', 'Blog App') </title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <title> @yield('title', 'Blog App') </title>
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-            @include('layouts.navigation')
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Scripts -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
 
-            <!-- Page Heading -->
-            @isset($header)
-                <header class="bg-white shadow dark:bg-gray-800">
-                    <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endisset
+<body class="font-sans antialiased text-gray-900 bg-gray-100">
 
-            <!-- Page Content -->
-            <main>
-                @yield('content')
+    <div class="flex min-h-screen">
+
+        <input type="checkbox" id="sidebar-toggle" class="hidden peer" />
+
+        <aside class="fixed inset-y-0 left-0 z-40 w-64 text-white transition-transform duration-300 ease-in-out transform -translate-x-full shadow-2xl bg-slate-900 peer-checked:translate-x-0 lg:static lg:inset-0 lg:translate-x-0">
+            
+            <div class="flex items-center justify-between h-20 px-6 bg-slate-800 lg:bg-transparent">
+                <span class="text-2xl font-bold tracking-wider text-blue-400">BLOG APP</span>
+                <label for="sidebar-toggle" class="cursor-pointer lg:hidden">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </label>
+            </div>
+
+            <nav class="mt-6">
+                <ul class="space-y-1">
+                    <li>
+                        <a href="{{ route('dashboard') }}" class="flex items-center px-6 py-4 hover:bg-slate-800 transition {{ request()->routeIs('dashboard') ? 'bg-blue-600 border-r-4' : '' }}">
+                            <span class="mr-3"></span> Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('categories') }}" class="flex items-center px-6 py-4 hover:bg-slate-800 transition {{ request()->routeIs('categories') ? 'bg-blue-600 border-r-4' : '' }}">
+                            <span class="mr-3"></span> Categories
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('category.create') }}" class="flex items-center px-6 py-4 hover:bg-slate-800 transition {{ request()->routeIs('category.create') ? 'bg-blue-600 border-r-4' : '' }}">
+                            <span class="mr-3"></span> Add Category
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('post.create') }}" class="flex items-center px-6 py-4 hover:bg-slate-800 transition {{ request()->routeIs('post.create') ? 'bg-blue-600 border-r-4' : '' }}">
+                            <span class="mr-3"></span> New Post
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <label for="sidebar-toggle" class="fixed inset-0 z-30 hidden bg-black/50 peer-checked:block lg:hidden"></label>
+
+        <div class="flex flex-col flex-1 min-w-0">
+            
+            <header class="flex items-center justify-between h-16 px-6 bg-white border-b shadow-sm">
+                <div class="flex items-center">
+                    <label for="sidebar-toggle" class="mr-4 text-gray-600 transition cursor-pointer lg:hidden hover:text-blue-600">
+                        <svg class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    </label>
+                    
+                    @isset($header)
+                        <h1 class="text-xl font-bold text-gray-800">{{ $header }}</h1>
+                    @endisset
+                </div>
+
+                <div>
+                    @include('layouts.navigation')
+                </div>
+            </header>
+
+            <main class="flex-1 p-6 overflow-y-auto md:p-10">
+                <div class="max-w-6xl mx-auto">
+                    @yield('content')
+                </div>
             </main>
         </div>
-    </body>
+    </div>
+
+</body>
+
 </html>
