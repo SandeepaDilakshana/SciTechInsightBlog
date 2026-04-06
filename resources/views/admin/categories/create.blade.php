@@ -28,7 +28,7 @@
                     <label for="name" class="text-sm font-semibold text-gray-600">Category Name</label>
                     <input type="text" name="name" id="name"
                         class="px-4 py-2 transition duration-200 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                        placeholder="e.g. Technology, Lifestyle, Food" required>
+                        placeholder="Enter a Category here" required>
                 </div>
 
                 <div class="pt-2 text-center">
