@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class PostsController extends Controller
@@ -27,14 +28,20 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-       $request->validate([
+        $request->validate([
             'title' => 'required',
             'featured' => 'required|image',
-            'content' => 'required'
+            'content' => 'required',
         ]);
 
-        dd($request->all());
+        $post = new Post;
 
+        $post->title = $request->title; // fix here
+        $post->featured = $request->featured;
+        $post->content = $request->content;
+        $post->save();
+
+        return redirect()->back();
     }
 
     /**
