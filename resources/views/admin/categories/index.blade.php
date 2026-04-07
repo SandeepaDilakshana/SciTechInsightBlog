@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    Categories
+@endsection
+
 @section('content')
     <div class="mt-5 overflow-hidden bg-white border border-gray-200 shadow sm:rounded-lg">
     <div class="p-4 border-b border-gray-200 bg-gray-50">
