@@ -5,15 +5,7 @@
 @endsection
 
 @section('content')
-    @if (count($errors) > 0)
-        <ul class="list-group">
-            @foreach ($errors->all() as $error)
-                <li class="list-group-item text-danger">
-                    {{ $error }}
-                </li>
-            @endforeach
-        </ul>
-    @endif
+    @include('includes.errors')
 
     <div class="mt-5 overflow-hidden bg-white border border-gray-200 shadow sm:rounded-lg">
         <div class="px-6 py-4 border-b border-gray-200 bg-gray-50">
