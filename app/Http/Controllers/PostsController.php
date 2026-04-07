@@ -31,15 +31,19 @@ class PostsController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'featured' => 'required|image',
+            'featured' => 'required|image|mimes:jpg,png,jpeg,gif',
             'content' => 'required',
             'category_id' => 'required'
         ]);
 
+        $featured = $request->featured;
+        $featured_new_name = time() . $featured->getClientOriginalName();
+        $featured->move('uploads/posts', $featured_new_name);
+
         $post = new Post;
 
-        $post->title = $request->title; // fix here
-        $post->featured = $request->featured;
+        $post->title = $request->title;
+        $post->featured = 'uploads/posts/' . $featured_new_name;
         $post->content = $request->content;
         $post->category_id = $request->category_id;
         $post->save();
