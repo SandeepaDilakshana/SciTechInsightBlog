@@ -48,7 +48,12 @@ class PostsController extends Controller
         $post->category_id = $request->category_id;
         $post->save();
 
-        return redirect()->back();
+        $notification = [
+            'message' => 'Your post created Successfully !',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->back()->with($notification);
     }
 
     /**
@@ -81,5 +86,21 @@ class PostsController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function deleteforever($id)
+    {
+        $post = Post::withTrashed()->find($id);
+
+        if ($post) {
+            $post->forceDelete();
+        }
+
+        $notification = [
+            'message' => 'Your post has been deleted successfully!',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->back()->with($notification);
     }
 }

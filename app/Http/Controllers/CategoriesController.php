@@ -37,7 +37,12 @@ class CategoriesController extends Controller
         $category->name = $request->name;
         $category->save();
 
-        return redirect()->route('categories');
+        $notification = [
+            'message' => 'New category created Successfully !',
+            'alert-type' => 'success'
+        ];
+
+        return redirect()->route('categories')->with($notification);
     }
 
     /**
@@ -54,6 +59,7 @@ class CategoriesController extends Controller
     public function edit(string $id)
     {
         $category = Category::find($id);
+        
 
         return view('admin.categories.edit')->with('category', $category);
     }
@@ -68,7 +74,12 @@ class CategoriesController extends Controller
         $category->name = $request->name;
         $category->save();
 
-        return redirect()->route('categories');
+        $notification = [
+            'message' => 'Your category updated Successfully !',
+            'alert-type' => 'success'
+        ];
+
+        return redirect()->route('categories')->with($notification);
     }
 
     /**
@@ -79,6 +90,28 @@ class CategoriesController extends Controller
         $category = Category::find($id);
         $category->delete();
 
-        return redirect()->route('categories');
+        $notification = [
+            'message' => 'Your category has been moved to trash successfully!',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->route('categories')->with($notification);
+    }
+
+
+    public function deleteforever($id)
+    {
+        $category = Category::withTrashed()->find($id);
+
+        if ($category) {
+            $category->forceDelete();
+        }
+
+        $notification = [
+            'message' => 'Your category has been deleted successfully!',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->back()->with($notification);
     }
 }
