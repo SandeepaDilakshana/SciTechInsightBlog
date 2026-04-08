@@ -31,7 +31,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/edit/{id}', 'edit')->name('category.edit');
         Route::get('/delete/{id}', 'destroy')->name('category.delete');
         Route::post('/update/{id}', 'update')->name('category.update');
+        Route::get('/trashed', 'trash')->name('category.trash');
     });
+
 });
 
 require __DIR__.'/auth.php';
