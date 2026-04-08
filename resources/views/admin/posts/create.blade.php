@@ -13,7 +13,8 @@
         </div>
 
         <div class="p-6">
-            <form action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
+            <form action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data" class="space-y-6"
+                id="postForm">
                 @csrf
 
                 <div class="flex flex-col space-y-1">
@@ -40,11 +41,13 @@
                         class="px-2 py-1 transition border border-gray-300 rounded-md file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
                 </div>
 
+
                 <div class="flex flex-col space-y-1">
                     <label for="content" class="text-sm font-semibold text-gray-600">Content</label>
-                    <textarea name="content" id="content" cols="5" rows="5"
-                        class="px-4 py-2 transition border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                        placeholder="Write your content here..."></textarea>
+
+                    <div id="editor" style="height: 300px;" class="bg-white"></div>
+
+                    <input type="hidden" name="content" id="content-hidden">
                 </div>
 
                 <div class="pt-4 text-center">
@@ -56,4 +59,21 @@
             </form>
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+
+    <script>
+        const quill = new Quill('#editor', {
+            theme: 'snow',
+            placeholder: 'Write your content here...'
+        });
+
+
+        const form = document.querySelector('#postForm');
+        form.onsubmit = function() {
+            const contentInput = document.querySelector('#content-hidden');
+
+            contentInput.value = quill.root.innerHTML;
+        };
+    </script>
 @endsection
