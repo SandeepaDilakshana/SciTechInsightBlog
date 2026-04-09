@@ -7,7 +7,7 @@
 @include('includes.errors')
 
 @section('content')
-    <div class="bg-white border border-gray-200 shadow ove5rflow-hidden mt- sm:rounded-lg">
+    <div class="mt-5 overflow-hidden bg-white border border-gray-200 shadow sm:rounded-lg">
         <div class="px-6 py-4 border-b border-gray-200 bg-gray-50">
             <h3 class="text-lg font-bold text-gray-700">Create a new category</h3>
         </div>

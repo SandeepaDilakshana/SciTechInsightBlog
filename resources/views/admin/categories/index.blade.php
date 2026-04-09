@@ -17,10 +17,10 @@
                         Category name
                     </th>
                     <th class="px-6 py-3 text-xs font-medium tracking-wider text-center text-gray-500 uppercase">
-                        Editing
+                        Edit
                     </th>
                     <th class="px-6 py-3 text-xs font-medium tracking-wider text-center text-gray-500 uppercase">
-                        Deleting
+                        Delete
                     </th>
                 </tr>
             </thead>
