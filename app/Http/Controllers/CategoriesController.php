@@ -87,7 +87,7 @@ class CategoriesController extends Controller
      */
     public function destroy(string $id)
     {
-        $category = Category::find($id);
+        $category = Category::findOrFail($id);
         $category->delete();
 
         $notification = [
