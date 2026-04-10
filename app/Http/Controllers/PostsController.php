@@ -85,7 +85,15 @@ class PostsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $post->delete();
+
+        $notification = [
+            'message' => 'Your post has been moved to trash successfully!',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->route('posts')->with($notification);
     }
 
     public function deleteforever($id)
