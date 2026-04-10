@@ -22,6 +22,7 @@ Route::middleware('auth')->group(function () {
     Route::controller(PostsController::class)->prefix('admin/post')->group(function () {
         Route::get('/create', 'create')->name('post.create');
         Route::post('/store', 'store')->name('post.store');
+        Route::get('/posts','index')->name('posts');
     });
 
     Route::controller(CategoriesController::class)->prefix('admin/category')->group(function () {
