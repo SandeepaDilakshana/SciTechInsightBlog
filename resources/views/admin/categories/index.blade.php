@@ -42,7 +42,8 @@
                             </td>
                             <td class="px-6 py-4 text-center whitespace-nowrap">
                                 <a href="{{ route('category.delete', ['id' => $category->id]) }}"
-                                    class="inline-flex items-center px-3 py-1 text-xs font-medium text-white transition-colors bg-red-500 rounded hover:bg-red-600" onclick="confirmDelete(event, this.href)">
+                                    class="inline-flex items-center px-3 py-1 text-xs font-medium text-white transition-colors bg-red-500 rounded hover:bg-red-600"
+                                    onclick="confirmDelete(event, this.href)">
                                     Move to Trash
                                 </a>
                             </td>
@@ -53,23 +54,5 @@
         </div>
     </div>
 
-    <script>
-        function confirmDelete(e, route) {
-            e.preventDefault();
-
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Yes, delete it!',
-                cancelButtonText: 'No, cancel!',
-                reverseButtons: true
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.href = route;
-                }
-            });
-        }
-    </script>
+    @include('includes.confirm_delete')
 @endsection
