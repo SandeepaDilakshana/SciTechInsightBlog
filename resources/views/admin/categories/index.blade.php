@@ -7,8 +7,8 @@
 @section('content')
     <div class="mt-5 overflow-hidden bg-white border border-gray-200 shadow sm:rounded-lg">
         <div class="flex items-center justify-between p-4 border-b border-gray-200 bg-gray-50">
-            <h3 class="text-lg font-bold text-gray-700">Posts</h3>
-            <a href="#"
+            <h3 class="text-lg font-bold text-gray-700">Categories</h3>
+            <a href="{{ route('category.trashbin') }}"
                 class="inline-flex items-center px-3 py-1 text-xs font-medium text-white transition-colors bg-red-500 rounded hover:bg-red-600">
                 Trash
             </a>
@@ -42,7 +42,8 @@
                             </td>
                             <td class="px-6 py-4 text-center whitespace-nowrap">
                                 <a href="{{ route('category.delete', ['id' => $category->id]) }}"
-                                    class="inline-flex items-center px-3 py-1 text-xs font-medium text-white transition-colors bg-red-500 rounded hover:bg-red-600">
+                                    class="inline-flex items-center px-3 py-1 text-xs font-medium text-white transition-colors bg-red-500 rounded hover:bg-red-600"
+                                    onclick="confirmDelete(event, this.href)">
                                     Move to Trash
                                 </a>
                             </td>
@@ -52,4 +53,6 @@
             </table>
         </div>
     </div>
+
+    @include('includes.confirm_delete')
 @endsection

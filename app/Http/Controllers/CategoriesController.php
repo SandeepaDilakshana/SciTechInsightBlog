@@ -98,6 +98,12 @@ class CategoriesController extends Controller
         return redirect()->route('categories')->with($notification);
     }
 
+    public function categorytrash()
+    {
+        $categories = Category::onlyTrashed()->latest()->get();
+        return view('admin.categories.trash', compact('categories'));
+    }
+
 
     public function deleteforever($id)
     {
@@ -109,6 +115,18 @@ class CategoriesController extends Controller
 
         $notification = [
             'message' => 'Your category has been deleted successfully!',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->back()->with($notification);
+    }
+
+    public function restore($id)
+    {
+        $category = Category::onlyTrashed()->find($id)->restore();
+
+        $notification = [
+            'message' => 'Your category has been restored successfully!',
             'alert-type' => 'success',
         ];
 

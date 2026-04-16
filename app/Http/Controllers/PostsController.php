@@ -96,6 +96,12 @@ class PostsController extends Controller
         return redirect()->route('posts')->with($notification);
     }
 
+    public function posttrash()
+    {
+        $posts = Post::onlyTrashed()->latest()->get();
+        return view('admin.posts.trash', compact('posts'));
+    }
+
     public function deleteforever($id)
     {
         $post = Post::withTrashed()->find($id);
@@ -106,6 +112,18 @@ class PostsController extends Controller
 
         $notification = [
             'message' => 'Your post has been deleted successfully!',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->back()->with($notification);
+    }
+
+    public function restore($id)
+    {
+        $posts = Post::onlyTrashed()->find($id)->restore();
+
+        $notification = [
+            'message' => 'Your post has been restored successfully!',
             'alert-type' => 'success',
         ];
 
