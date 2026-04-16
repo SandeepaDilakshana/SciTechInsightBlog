@@ -29,7 +29,7 @@
                         <tr class="transition-colors hover:bg-gray-50">
                             <td class="px-6 py-4 text-sm text-gray-900 whitespace-nowrap">{{ $category->name }}</td>
                             <td class="px-6 py-4 text-center whitespace-nowrap">
-                                <a href="#"
+                                <a href="{{ route('category.restore', ['id' => $category->id]) }}"
                                     class="inline-flex items-center px-3 py-1 text-xs font-medium text-white transition-colors bg-blue-500 rounded hover:bg-blue-600">
                                     Restore
                                 </a>
@@ -48,23 +48,5 @@
         </div>
     </div>
 
-    <script>
-        function confirmDelete(e, route) {
-            e.preventDefault();
-
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Yes, delete it!',
-                cancelButtonText: 'No, cancel!',
-                reverseButtons: true
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.href = route;
-                }
-            });
-        }
-    </script>
+    @include('includes.confirm_delete')
 @endsection
