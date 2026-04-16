@@ -98,6 +98,12 @@ class CategoriesController extends Controller
         return redirect()->route('categories')->with($notification);
     }
 
+    public function categorytrash()
+    {
+        $categories = Category::onlyTrashed()->latest()->get();
+        return view('admin.categories.trash', compact('categories'));
+    }
+
 
     public function deleteforever($id)
     {
