@@ -96,6 +96,12 @@ class PostsController extends Controller
         return redirect()->route('posts')->with($notification);
     }
 
+    public function posttrash()
+    {
+        $posts = Post::onlyTrashed()->latest()->get();
+        return view('admin.posts.trash', compact('posts'));
+    }
+
     public function deleteforever($id)
     {
         $post = Post::withTrashed()->find($id);
