@@ -117,4 +117,16 @@ class PostsController extends Controller
 
         return redirect()->back()->with($notification);
     }
+
+    public function restore($id)
+    {
+        $posts = Post::onlyTrashed()->find($id)->restore();
+
+        $notification = [
+            'message' => 'Your post has been restored successfully!',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->back()->with($notification);
+    }
 }
