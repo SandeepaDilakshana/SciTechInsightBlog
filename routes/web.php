@@ -27,6 +27,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/trashbin', 'posttrash')->name('post.trashbin');
         Route::get('/delete/{id}','destroy')->name('post.delete');
         Route::get('/trashed/{id}','deleteforever')->name('post.trash');
+        Route::get('/restore/{id}', 'restore')->name('post.restore');
     });
 
     Route::controller(CategoriesController::class)->prefix('admin/category')->group(function () {
@@ -38,6 +39,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/update/{id}', 'update')->name('category.update');
         Route::get('/trashbin', 'categorytrash')->name('category.trashbin');
         Route::get('/trashed/{id}', 'deleteforever')->name('category.trash');
+        Route::get('/restore/{id}', 'restore')->name('category.restore');
     });
 
 });
