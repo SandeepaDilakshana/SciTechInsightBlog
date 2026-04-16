@@ -22,6 +22,9 @@ Route::middleware('auth')->group(function () {
     Route::controller(PostsController::class)->prefix('admin/post')->group(function () {
         Route::get('/create', 'create')->name('post.create');
         Route::post('/store', 'store')->name('post.store');
+        Route::get('/posts','index')->name('posts');
+        Route::get('/posts/{id}','edit')->name('post.edit');
+        Route::get('/delete/{id}','destroy')->name('post.delete');
     });
 
     Route::controller(CategoriesController::class)->prefix('admin/category')->group(function () {
@@ -31,7 +34,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/edit/{id}', 'edit')->name('category.edit');
         Route::get('/delete/{id}', 'destroy')->name('category.delete');
         Route::post('/update/{id}', 'update')->name('category.update');
-        Route::get('/trashed', 'trash')->name('category.trash');
+        Route::get('/trashed', 'deleteforever')->name('category.trash'); //fix here 
     });
 
 });
