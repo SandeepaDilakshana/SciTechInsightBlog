@@ -120,4 +120,16 @@ class CategoriesController extends Controller
 
         return redirect()->back()->with($notification);
     }
+
+    public function restore($id)
+    {
+        $category = Category::onlyTrashed()->find($id)->restore();
+
+        $notification = [
+            'message' => 'Your category has been restored successfully!',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->back()->with($notification);
+    }
 }
