@@ -13,7 +13,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        return view('admin.posts.index')->with('posts', Post::all());
+        return view('admin.posts.index')->with('posts', Post::paginate(10));
     }
 
     /**
@@ -98,7 +98,7 @@ class PostsController extends Controller
 
     public function posttrash()
     {
-        $posts = Post::onlyTrashed()->latest()->get();
+        $posts = Post::onlyTrashed()->latest()->paginate(10);
         return view('admin.posts.trash', compact('posts'));
     }
 
