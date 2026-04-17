@@ -16,7 +16,7 @@
                         <th class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                             Category name
                         </th>
-                        <th class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                        <th class="px-6 py-3 text-xs font-medium tracking-wider text-center text-gray-500 uppercase">
                             Restore
                         </th>
                         <th class="px-6 py-3 text-xs font-medium tracking-wider text-center text-gray-500 uppercase">
@@ -47,6 +47,8 @@
             </table>
         </div>
     </div>
-
+    <div class="mt-4">
+        {{ $categories->links() }}
+    </div>
     @include('includes.confirm_delete')
 @endsection
