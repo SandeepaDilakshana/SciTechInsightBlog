@@ -53,6 +53,8 @@
             </table>
         </div>
     </div>
-
+    <div class="mt-4">
+        {{ $categories->links() }}
+    </div>
     @include('includes.confirm_delete')
 @endsection
