@@ -33,17 +33,17 @@ class PostsController extends Controller
             'title' => 'required',
             'featured' => 'required|image|mimes:jpg,png,jpeg,gif',
             'content' => 'required',
-            'category_id' => 'required'
+            'category_id' => 'required',
         ]);
 
         $featured = $request->featured;
-        $featured_new_name = time() . $featured->getClientOriginalName();
+        $featured_new_name = time().$featured->getClientOriginalName();
         $featured->move('uploads/posts', $featured_new_name);
 
         $post = new Post;
 
         $post->title = $request->title;
-        $post->featured = 'uploads/posts/' . $featured_new_name;
+        $post->featured = 'uploads/posts/'.$featured_new_name;
         $post->content = $request->content;
         $post->category_id = $request->category_id;
         $post->save();
@@ -69,7 +69,10 @@ class PostsController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $categories = Category::all();
+
+        return view('admin.posts.edit', compact('post', 'categories'));
     }
 
     /**
@@ -77,7 +80,32 @@ class PostsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $post = Post::findOrFail($id);
+
+        $post->title = $request->title;
+        $post->content = $request->content;
+        $post->category_id = $request->category_id;
+
+        if ($request->hasFile('featured')) {
+            $image = $request->featured;
+            $image_new_name = time().$image->getClientOriginalName();
+            $image->move('uploads/posts/', $image_new_name);
+
+            if ($post->featured && file_exists(public_path($post->featured))) {
+                unlink(public_path($post->featured));
+            }
+
+            $post->featured = 'uploads/posts/'.$image_new_name;
+        }
+
+        $post->save();
+
+        $notification = [
+            'message' => 'Your post updated Successfully !',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->route('posts')->with($notification);
     }
 
     /**
@@ -99,6 +127,7 @@ class PostsController extends Controller
     public function posttrash()
     {
         $posts = Post::onlyTrashed()->latest()->paginate(10);
+
         return view('admin.posts.trash', compact('posts'));
     }
 
