@@ -28,6 +28,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/delete/{id}','destroy')->name('post.delete');
         Route::get('/trashed/{id}','deleteforever')->name('post.trash');
         Route::get('/restore/{id}', 'restore')->name('post.restore');
+        Route::get('/edit/{id}', 'edit')->name('post.edit');
+        Route::post('/update/{id}', 'update')->name('post.update');
     });
 
     Route::controller(CategoriesController::class)->prefix('admin/category')->group(function () {
