@@ -52,6 +52,8 @@
             </table>
         </div>
     </div>
-
+    <div class="mt-4">
+        {{ $posts->links() }}
+    </div>
     @include('includes.confirm_delete')
 @endsection
