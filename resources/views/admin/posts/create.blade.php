@@ -52,7 +52,7 @@
 
                 <div class="pt-4 text-center">
                     <button type="submit"
-                        class="w-full md:w-auto px-10 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg shadow-md transition duration-200 transform hover:-translate-y-0.5">
+                        class="w-full md:w-auto px-10 py-2.5 bg-green-600 hover:bg-green-700 text-white font-bold rounded-lg shadow-md transition duration-200 transform hover:-translate-y-0.5">
                         Store Post
                     </button>
                 </div>
