@@ -42,10 +42,10 @@
                                 {{ $category->name }}
                             </td>
                             <td class="px-6 py-4 text-center whitespace-nowrap">
-                                <a href="{{ route('category.edit', ['id' => $category->id]) }}"
+                                <button type="button" onclick="toggleModal('editCategoryModal-{{ $category->id }}')"
                                     class="inline-flex items-center px-3 py-1 text-xs font-medium text-white transition-colors bg-blue-500 rounded hover:bg-blue-600">
                                     Edit
-                                </a>
+                                </button>
                             </td>
                             <td class="px-6 py-4 text-center whitespace-nowrap">
                                 <a href="{{ route('category.delete', ['id' => $category->id]) }}"
@@ -55,6 +55,42 @@
                                 </a>
                             </td>
                         </tr>
+
+                        <div id="editCategoryModal-{{ $category->id }}"
+                            class="fixed inset-0 z-50 items-center justify-center hidden overflow-y-auto bg-black bg-opacity-50">
+                            <div class="relative w-full max-w-md p-6 mx-auto bg-white rounded-lg shadow-xl">
+                                <div class="flex items-center justify-between mb-4 text-left">
+                                    <h3 class="text-xl font-bold text-gray-800">Edit Category</h3>
+                                    <button onclick="toggleModal('editCategoryModal-{{ $category->id }}')"
+                                        class="text-gray-400 hover:text-gray-600">&times;</button>
+                                </div>
+
+                                <form action="{{ route('category.update', $category->id) }}" method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                    <div class="mb-4 text-left">
+                                        <label for="name-{{ $category->id }}"
+                                            class="block text-sm font-medium text-gray-700">Category
+                                            Name</label>
+                                        <input type="text" name="name" id="name-{{ $category->id }}"
+                                            value="{{ $category->name }}" required
+                                            class="w-full px-3 py-2 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                                    </div>
+
+                                    <div class="flex justify-end space-x-3">
+                                        <button type="button"
+                                            onclick="toggleModal('editCategoryModal-{{ $category->id }}')"
+                                            class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-200 rounded-md hover:bg-gray-300">
+                                            Cancel
+                                        </button>
+                                        <button type="submit"
+                                            class="px-4 py-2 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600">
+                                            Update Category
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     @empty
                         <tr>
                             <td colspan="10" class="p-20 text-center bg-gray-50">
