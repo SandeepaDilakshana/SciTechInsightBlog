@@ -4,7 +4,7 @@
 
         Swal.fire({
             title: 'Are you sure?',
-            text: "You won't be able to revert this!",
+            text: "Do you want to delete this item!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonText: 'Yes, delete it!',
