@@ -34,7 +34,7 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::controller(CategoriesController::class)->prefix('admin/category')->group(function () {
-        Route::get('/create', 'create')->name('category.create');
+        //Route::get('/create', 'create')->name('category.create');
         Route::post('/store', 'store')->name('category.store');
         Route::get('/categories', 'index')->name('categories');
         Route::get('/edit/{id}', 'edit')->name('category.edit');
@@ -47,6 +47,8 @@ Route::middleware('auth')->group(function () {
 
     Route::controller(TagsController::class)->prefix('tag')->group(function(){
         Route::get('/tags', 'index')->name('tags');
+        Route::post('/store', 'store')->name('tag.store');
+        Route::get('/delete/{id}', 'destroy')->name('tag.delete');
     });
 
 });
