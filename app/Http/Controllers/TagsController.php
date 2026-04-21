@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Tag;
+use Illuminate\Http\Request;
 
 class TagsController extends Controller
 {
@@ -29,7 +29,7 @@ class TagsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'tag' => 'required|string'
+            'tag' => 'required|string',
         ]);
 
         $tag = new Tag;
@@ -39,7 +39,7 @@ class TagsController extends Controller
 
         $notification = [
             'message' => 'New tag created Successfully !',
-            'alert-type' => 'success'
+            'alert-type' => 'success',
         ];
 
         return redirect()->route('tags')->with($notification);
@@ -66,7 +66,20 @@ class TagsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'tag' => 'required|string|max:255',
+        ]);
+
+        $tag = Tag::findOrFail($id);
+        $tag->tag = $request->tag;
+        $tag->save();
+
+        $notification = [
+            'message' => 'Tag updated successfully!',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->route('tags')->with($notification);
     }
 
     /**
