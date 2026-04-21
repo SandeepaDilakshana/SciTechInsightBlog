@@ -49,6 +49,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/tags', 'index')->name('tags');
         Route::post('/store', 'store')->name('tag.store');
         Route::get('/delete/{id}', 'destroy')->name('tag.delete');
+        Route::put('/update/{id}', 'update')->name('tag.update');
     });
 
 });
