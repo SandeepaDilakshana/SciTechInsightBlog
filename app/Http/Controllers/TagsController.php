@@ -12,7 +12,7 @@ class TagsController extends Controller
      */
     public function index()
     {
-        //  
+        return view('admin.tags.index')->with('tags', Tag::paginate(10));
     }
 
     /**
