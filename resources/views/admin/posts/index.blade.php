@@ -32,7 +32,7 @@
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
-                    @foreach ($posts as $post)
+                    @forelse ($posts as $post)
                         <tr class="transition-colors hover:bg-gray-50">
                             <td class="px-6 py-4 text-sm text-gray-900 whitespace-nowrap"><img src="{{ $post->featured }}"
                                     alt="{{ $post->title }}" width="70px" height="70px"</td>
@@ -51,7 +51,15 @@
                                 </a>
                             </td>
                         </tr>
-                    @endforeach
+                    @empty
+                        <tr>
+                            <td colspan="10" class="p-20 text-center bg-gray-50">
+                                <div class="flex flex-col items-center justify-center w-full">
+                                    <p class="text-xl font-semibold text-gray-500">No any posts at the moment!</p>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>
