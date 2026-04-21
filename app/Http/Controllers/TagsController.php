@@ -28,7 +28,21 @@ class TagsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'tag' => 'required|string'
+        ]);
+
+        $tag = new Tag;
+
+        $tag->tag = $request->tag;
+        $tag->save();
+
+        $notification = [
+            'message' => 'New tag created Successfully !',
+            'alert-type' => 'success'
+        ];
+
+        return redirect()->route('tags')->with($notification);
     }
 
     /**
@@ -60,6 +74,14 @@ class TagsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $tag = Tag::findOrFail($id);
+        $tag->delete();
+
+        $notification = [
+            'message' => 'Your tag has been deleted successfully!',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->route('tags')->with($notification);
     }
 }
