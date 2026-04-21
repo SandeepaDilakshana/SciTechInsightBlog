@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TagsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -38,10 +39,14 @@ Route::middleware('auth')->group(function () {
         Route::get('/categories', 'index')->name('categories');
         Route::get('/edit/{id}', 'edit')->name('category.edit');
         Route::get('/delete/{id}', 'destroy')->name('category.delete');
-        Route::post('/update/{id}', 'update')->name('category.update');
+        Route::put('/update/{id}', 'update')->name('category.update');
         Route::get('/trashbin', 'categorytrash')->name('category.trashbin');
         Route::get('/trashed/{id}', 'deleteforever')->name('category.trash');
         Route::get('/restore/{id}', 'restore')->name('category.restore');
+    });
+
+    Route::controller(TagsController::class)->prefix('tag')->group(function(){
+        Route::get('/tags', 'index')->name('tags');
     });
 
 });
