@@ -65,15 +65,9 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="{{ route('tags') }}"
                             class="flex items-center px-6 py-4 hover:bg-slate-800 transition {{ request()->routeIs('tags') ? 'bg-blue-600 border-r-4' : '' }}">
                             <span class="mr-3"></span> All Tags
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('category.create') }}"
-                            class="flex items-center px-6 py-4 hover:bg-slate-800 transition {{ request()->routeIs('category.create') ? 'bg-blue-600 border-r-4' : '' }}">
-                            <span class="mr-3"></span> Add New Category
                         </a>
                     </li>
                     <li>
