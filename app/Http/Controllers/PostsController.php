@@ -53,7 +53,7 @@ class PostsController extends Controller
             'alert-type' => 'success',
         ];
 
-        return redirect()->back()->with($notification);
+        return redirect()->route('posts')->with($notification);
     }
 
     /**
