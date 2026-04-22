@@ -105,6 +105,8 @@ class PostsController extends Controller
 
         $post->save();
 
+        $post->tags()->sync($request->tags); //updates the pivot table
+
         $notification = [
             'message' => 'Your post updated Successfully !',
             'alert-type' => 'success',
