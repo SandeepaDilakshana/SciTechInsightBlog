@@ -36,6 +36,21 @@
                     </select>
                 </div>
 
+                <div class="form-group">
+                    <label for="tags" class="mb-2 text-sm font-semibold text-gray-600">Select tags</label>
+                    @foreach ($tags as $tag)
+                        <div class="flex items-center mb-4">
+                            <input type="checkbox" id="basic" value="{{ $tag->id }}" name="tags[]"
+                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded accent-blue-600"
+                                @foreach ($post->tags as $t)
+                                    @if ($tag->id == $t->id)
+                                        checked                                        
+                                    @endif @endforeach>
+                            <label for="basic" class="ml-2 text-sm font-medium text-gray-900">{{ $tag->tag }}</label>
+                        </div>
+                    @endforeach
+                </div>
+
                 <div class="flex flex-col space-y-1">
                     <label for="featured" class="text-sm font-semibold text-gray-600">Existing Image</label>
 
@@ -56,15 +71,14 @@
 
                     <div id="editor" style="height: 300px;" class="bg-white">{!! $post->content !!}</div>
 
-                    <input type="hidden" name="content" id="content-hidden"
-                </div>
+                    <input type="hidden" name="content" id="content-hidden" </div>
 
-                <div class="pt-4 text-center">
-                    <button type="submit"
-                        class="w-full md:w-auto px-10 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg shadow-md transition duration-200 transform hover:-translate-y-0.5">
-                        Update Post
-                    </button>
-                </div>
+                    <div class="pt-4 text-center">
+                        <button type="submit"
+                            class="w-full md:w-auto px-10 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg shadow-md transition duration-200 transform hover:-translate-y-0.5">
+                            Update Post
+                        </button>
+                    </div>
             </form>
         </div>
     </div>
