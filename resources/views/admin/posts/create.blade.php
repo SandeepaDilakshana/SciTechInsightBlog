@@ -35,6 +35,17 @@
                     </select>
                 </div>
 
+                <div class="form-group">
+                    <label for="tags" class="mb-2 text-sm font-semibold text-gray-600">Select tags</label>
+                    @foreach ($tags as $tag)
+                        <div class="flex items-center mb-4">
+                            <input type="checkbox" id="basic" value="{{ $tag->id }}" name="tags[]"
+                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded accent-blue-600">
+                            <label for="basic" class="ml-2 text-sm font-medium text-gray-900">{{ $tag->tag }}</label>
+                        </div>
+                    @endforeach
+                </div>
+
                 <div class="flex flex-col space-y-1">
                     <label for="featured" class="text-sm font-semibold text-gray-600">Featured Image</label>
                     <input type="file" name="featured" id="featured"
