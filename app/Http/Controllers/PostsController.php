@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class PostsController extends Controller
@@ -21,7 +22,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view('admin.posts.create')->with('categories', Category::all());
+        return view('admin.posts.create')->with('categories', Category::all())->with('tags', Tag::all());
     }
 
     /**
@@ -34,6 +35,7 @@ class PostsController extends Controller
             'featured' => 'required|image|mimes:jpg,png,jpeg,gif',
             'content' => 'required',
             'category_id' => 'required',
+            'tags' => 'required',
         ]);
 
         $featured = $request->featured;
@@ -48,6 +50,8 @@ class PostsController extends Controller
         $post->category_id = $request->category_id;
         $post->save();
 
+        $post->tags()->attach($request->tags);  // attach() available with pivot tables in laravel
+                                                // and also this should code after saving the post.
         $notification = [
             'message' => 'Your post created Successfully !',
             'alert-type' => 'success',
