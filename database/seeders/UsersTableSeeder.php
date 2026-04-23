@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Profile;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
@@ -14,11 +15,19 @@ class UsersTableSeeder extends Seeder
      */
     public function run(): void
     {
-        User::create([
+        $user = User::create([
             'name' => 'admin sandeepa',
             'email' => 'admin123@gmail.com',
-            'password' => Hash::make('12345678')
+            'password' => Hash::make('12345678'),
+            'admin' => 1
+        ]);
 
+        Profile::create([
+            'user_id' => $user->id,
+            'avatar' => 'uploads/avatars/836.jpg',
+            'about' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+            'facebook' => 'facebook.com',
+            'youtube' => 'youtube.com'
         ]);
     }
 }
