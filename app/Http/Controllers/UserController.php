@@ -86,4 +86,32 @@ class UserController extends Controller
     {
         //
     }
+
+    public function admin($id){
+        $user = User::findOrFail($id);
+
+        $user->admin = 1;
+        $user->save();
+
+        $notification = [
+            'message' => 'Successfully changed user permissions !',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->route('users')->with($notification);
+    }
+
+    public function not_admin($id){
+        $user = User::findOrFail($id);
+
+        $user->admin = 0;
+        $user->save();
+
+        $notification = [
+            'message' => 'Successfully changed user permissions !',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->route('users')->with($notification);
+    }
 }
