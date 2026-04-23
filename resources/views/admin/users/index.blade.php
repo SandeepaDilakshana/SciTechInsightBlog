@@ -15,31 +15,37 @@
         </div>
         <div class="overflow-x-auto">
             <table class="min-w-full divide-y divide-gray-200">
-                <thead class="bg-gray-100">
+                <thead>
                     <tr>
+                        <th class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">Image</th>
+                        <th class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">Name</th>
                         <th class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                            Image
-                        </th>
-                        <th class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                            Name
-                        </th>
-                        <th class="px-6 py-3 text-xs font-medium tracking-wider text-center text-gray-500 uppercase">
-                            Permissions
-                        </th>
-                        <th class="px-6 py-3 text-xs font-medium tracking-wider text-center text-gray-500 uppercase">
-                            Move to Trash
+                            Permissions</th>
+                        <th class="px-6 py-3 text-xs font-medium tracking-wider text-center text-gray-500 uppercase">Move to Trash
                         </th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
                     @forelse ($users as $user)
-                        <tr class="transition-colors hover:bg-gray-50">
-                            <td class="px-6 py-4 text-sm text-gray-900 whitespace-nowrap"><img
-                                    src="{{ asset($user->profile->avatar) }}" alt="user_avatar" width="70px"
-                                    height="70px">
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <img src="{{ asset($user->profile->avatar) }}" class="object-cover rounded-full"
+                                    width="50" height="50">
                             </td>
                             <td class="px-6 py-4 text-sm text-gray-900 whitespace-nowrap">{{ $user->name }}</td>
-                            <td class="px-6 py-4 text-sm text-gray-900 whitespace-nowrap">Permissions</td>
+                            <td class="px-6 py-4 text-sm text-gray-900 whitespace-nowrap">
+                                @if ($user->admin)
+                                    <a href="{{ route('user.not_admin', ['id' => $user->id]) }}"
+                                        class="inline-flex items-center px-3 py-1 text-xs font-medium text-white transition-colors bg-red-500 rounded hover:bg-red-600">
+                                        Remove Admin Permision
+                                    </a>
+                                @else
+                                    <a href="{{ route('user.admin', ['id' => $user->id]) }}"
+                                        class="inline-flex items-center px-3 py-1 text-xs font-medium text-white transition-colors rounded bg-cyan-500 hover:bg-cyan-600">
+                                        Make Admin
+                                    </a>
+                                @endif
+                            </td>
                             <td class="px-6 py-4 text-center whitespace-nowrap">
                                 <a href="#"
                                     class="inline-flex items-center px-3 py-1 text-xs font-medium text-white transition-colors bg-red-500 rounded hover:bg-red-600"
