@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TagsController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -11,7 +12,7 @@ Route::get('/', function () {
 });
 
 Route::get('/test', function(){
-    return App\Models\Post::find(10)->category;
+    return App\Models\User::find(1)->profile;
 });
 
 Route::get('/dashboard', function () {
@@ -54,6 +55,12 @@ Route::middleware('auth')->group(function () {
         Route::post('/store', 'store')->name('tag.store');
         Route::get('/delete/{id}', 'destroy')->name('tag.delete');
         Route::put('/update/{id}', 'update')->name('tag.update');
+    });
+
+    Route::controller(UserController::class)->prefix('user')->group(function(){
+        Route::get('/users', 'index')->name('users');
+        Route::get('/create', 'create')->name('user.create');
+        Route::post('/store', 'store')->name('user.store');
     });
 
 });
