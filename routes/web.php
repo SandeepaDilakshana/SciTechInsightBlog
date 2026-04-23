@@ -59,7 +59,7 @@ Route::middleware('auth')->group(function () {
 
     Route::controller(UserController::class)->prefix('user')->group(function(){
         Route::get('/users', 'index')->name('users');
-        Route::get('/create', 'create')->name('user.create');
+        Route::get('/create', 'create')->name('user.create');        
         Route::post('/store', 'store')->name('user.store');
     });
 
