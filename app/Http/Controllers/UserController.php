@@ -42,7 +42,8 @@ class UserController extends Controller
         ]);
 
         $profile = Profile::create([
-            'user_id' => $user->id
+            'user_id' => $user->id,
+            'avatar' => 'uploads/avatars/836.jpg'
         ]);
 
 
