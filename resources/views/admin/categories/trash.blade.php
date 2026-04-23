@@ -16,7 +16,7 @@
                         <th class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                             Category name
                         </th>
-                        <th class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                        <th class="px-6 py-3 text-xs font-medium tracking-wider text-center text-gray-500 uppercase">
                             Restore
                         </th>
                         <th class="px-6 py-3 text-xs font-medium tracking-wider text-center text-gray-500 uppercase">
@@ -25,7 +25,7 @@
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
-                    @foreach ($categories as $category)
+                    @forelse ($categories as $category)
                         <tr class="transition-colors hover:bg-gray-50">
                             <td class="px-6 py-4 text-sm text-gray-900 whitespace-nowrap">{{ $category->name }}</td>
                             <td class="px-6 py-4 text-center whitespace-nowrap">
@@ -42,11 +42,30 @@
                                 </a>
                             </td>
                         </tr>
-                    @endforeach
+                    @empty
+                        <tr>
+                            <td colspan="10" class="p-20 text-center bg-gray-50">
+                                <div class="flex flex-col items-center justify-center w-full">
+                                    <div class="p-4 mb-4 bg-gray-100 rounded-full">
+                                        <svg class="w-16 h-16 text-gray-400" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
+                                            </path>
+                                        </svg>
+                                    </div>
+                                    <p class="text-xl font-semibold text-gray-500">Your trash bin is empty!</p>
+                                    <p class="text-sm text-gray-400">There are no deleted categories to show at the moment.</p>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>
     </div>
-
+    <div class="mt-4">
+        {{ $categories->links() }}
+    </div>
     @include('includes.confirm_delete')
 @endsection

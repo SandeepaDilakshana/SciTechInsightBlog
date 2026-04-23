@@ -12,7 +12,7 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        return view('admin.categories.index')->with('categories',Category::all());
+        return view('admin.categories.index')->with('categories',Category::paginate(10));
     }
 
     /**
@@ -20,7 +20,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        return view('admin.categories.create');
+        //
     }
 
     /**
@@ -69,7 +69,11 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $category = Category::find($id);
+        $request->validate([
+            'name' => 'required|string'
+        ]);
+
+        $category = Category::findOrFail($id);
 
         $category->name = $request->name;
         $category->save();
@@ -100,7 +104,7 @@ class CategoriesController extends Controller
 
     public function categorytrash()
     {
-        $categories = Category::onlyTrashed()->latest()->get();
+        $categories = Category::onlyTrashed()->latest()->paginate(10);
         return view('admin.categories.trash', compact('categories'));
     }
 
