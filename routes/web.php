@@ -61,6 +61,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/users', 'index')->name('users');
         Route::get('/create', 'create')->name('user.create');        
         Route::post('/store', 'store')->name('user.store');
+        Route::get('/admin/{id}', 'admin')->name('user.admin');
+        Route::get('/not_admin/{id}', 'not_admin')->name('user.not_admin');
     });
 
 });
