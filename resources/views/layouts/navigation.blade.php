@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="flex items-center shrink-0">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block w-auto text-black-800 fill-current h-9 dark:text-black-200" />
+                        <x-application-logo class="block w-auto fill-current text-black-800 h-9 dark:text-black-200" />
                     </a>
                 </div>
             </div>
@@ -16,7 +16,7 @@
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button
-                            class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-black-500 transition duration-150 ease-in-out bg-white border border-transparent rounded-md dark:text-black-400 dark:bg-black-800 hover:text-black-700 dark:hover:text-black-300 focus:outline-none">
+                            class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 transition duration-150 ease-in-out bg-white border border-transparent rounded-md text-black-500 dark:text-black-400 dark:bg-black-800 hover:text-black-700 dark:hover:text-black-300 focus:outline-none">
                             <div>{{ Auth::user()->name }}</div>
 
                             <div class="ms-1">
