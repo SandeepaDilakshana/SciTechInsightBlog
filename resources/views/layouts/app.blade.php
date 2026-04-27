@@ -70,22 +70,24 @@
                             <span class="mr-3"></span> All Tags
                         </a>
                     </li>
-                    <li>
-                        <a href="{{ route('users') }}"
-                            class="flex items-center px-6 py-4 hover:bg-slate-800 transition {{ request()->routeIs('users') ? 'bg-blue-600 border-r-4' : '' }}">
-                            <span class="mr-3"></span> Users
-                        </a>
-                    </li>
+                    @if (Auth::user()->admin)
+                        <li>
+                            <a href="{{ route('users') }}"
+                                class="flex items-center px-6 py-4 hover:bg-slate-800 transition {{ request()->routeIs('users') ? 'bg-blue-600 border-r-4' : '' }}">
+                                <span class="mr-3"></span> Users
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('user.create') }}"
+                                class="flex items-center px-6 py-4 hover:bg-slate-800 transition {{ request()->routeIs('user.create') ? 'bg-blue-600 border-r-4' : '' }}">
+                                <span class="mr-3"></span> Create New User
+                            </a>
+                        </li>
+                    @endif
                     <li>
                         <a href="{{ route('post.create') }}"
                             class="flex items-center px-6 py-4 hover:bg-slate-800 transition {{ request()->routeIs('post.create') ? 'bg-blue-600 border-r-4' : '' }}">
                             <span class="mr-3"></span> Add New Post
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('user.create') }}"
-                            class="flex items-center px-6 py-4 hover:bg-slate-800 transition {{ request()->routeIs('user.create') ? 'bg-blue-600 border-r-4' : '' }}">
-                            <span class="mr-3"></span> Create New User
                         </a>
                     </li>
                 </ul>
