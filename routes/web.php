@@ -63,6 +63,8 @@ Route::middleware('auth')->group(function () {
         Route::post('/store', 'store')->name('user.store');
         Route::get('/admin/{id}', 'admin')->name('user.admin');
         Route::get('/not_admin/{id}', 'not_admin')->name('user.not_admin');
+        //Route::get('/profile', 'not_admin')->name('user.not_admin');
+        Route::get('/profile/update', 'update')->name('user.update');
     });
 
 });
