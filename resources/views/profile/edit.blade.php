@@ -13,19 +13,19 @@
         </div>
 
         <div class="p-6">
-            <form action="#" method="POST" enctype="multipart/form-data" class="space-y-6" id="profileForm">
+            <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data" class="space-y-6" id="profileForm">
                 @csrf
 
                 <div class="flex flex-col space-y-1">
                     <label for="name" class="text-sm font-semibold text-gray-600">Name</label>
-                    <input type="text" name="name"
+                    <input type="text" name="name" value="{{ $user->name }}"
                         class="px-4 py-2 transition border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                         placeholder="Enter your name here" required>
                 </div>
                 
                 <div class="flex flex-col space-y-1">
                     <label for="email" class="text-sm font-semibold text-gray-600">Email</label>
-                    <input type="email" name="email"
+                    <input type="email" name="email" value="{{ $user->email }}"
                         class="px-4 py-2 transition border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                         placeholder="Enter your email here" required>
                 </div>
@@ -43,20 +43,20 @@
                 </div>
                 <div class="flex flex-col space-y-1">
                     <label for="facebook" class="text-sm font-semibold text-gray-600">Facebook</label>
-                    <input type="text" name="facebook"
+                    <input type="text" name="facebook" value="{{ $user->profile->facebook }}"
                         class="px-4 py-2 transition border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                         placeholder="Facebook profile" required>
                 </div>
                 <div class="flex flex-col space-y-1">
                     <label for="youtube" class="text-sm font-semibold text-gray-600">Youtube</label>
-                    <input type="text" name="youtube"
+                    <input type="text" name="youtube" value="{{ $user->profile->youtube }}"
                         class="px-4 py-2 transition border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                         placeholder="Youtube channel" required>
                 </div>
 
                 <div class="flex flex-col space-y-1">
                     <label for="about" class="text-sm font-semibold text-gray-600">About</label>
-                    <div id="editor" style="height: 300px;" class="bg-white"></div>
+                    <div id="editor" style="height: 300px;" class="bg-white">{!! $user->profile->about !!}</div>
                     <input type="hidden" name="about" id="content-hidden">
                 </div>
 
