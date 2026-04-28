@@ -50,7 +50,12 @@ class ProfileController extends Controller
         'about' => $request->about
     ]);
 
-    return Redirect::route('profile.edit')->with('status', 'profile-updated');
+    $notification = [
+            'message' => 'Your profile has been updated successfully!',
+            'alert-type' => 'success',
+        ];
+
+    return Redirect::route('profile.edit')->with('status', 'profile-updated')->with($notification);
     }
 
     /**
