@@ -6,9 +6,19 @@ use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
-class UserController extends Controller
+class UserController extends Controller implements HasMiddleware
 {
+
+    public static function middleware(): array
+    {
+        return [
+            'admin'
+        ];
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -42,7 +52,8 @@ class UserController extends Controller
         ]);
 
         $profile = Profile::create([
-            'user_id' => $user->id
+            'user_id' => $user->id,
+            'avatar' => 'uploads/avatars/836.jpg'
         ]);
 
 
@@ -84,5 +95,33 @@ class UserController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function admin($id){
+        $user = User::findOrFail($id);
+
+        $user->admin = 1;
+        $user->save();
+
+        $notification = [
+            'message' => 'Successfully changed user permissions !',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->route('users')->with($notification);
+    }
+
+    public function not_admin($id){
+        $user = User::findOrFail($id);
+
+        $user->admin = 0;
+        $user->save();
+
+        $notification = [
+            'message' => 'Successfully changed user permissions !',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->route('users')->with($notification);
     }
 }
