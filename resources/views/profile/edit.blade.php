@@ -13,7 +13,8 @@
         </div>
 
         <div class="p-6">
-            <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data" class="space-y-6" id="profileForm">
+            <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data" class="space-y-6"
+                id="profileForm">
                 @csrf
 
                 <div class="flex flex-col space-y-1">
@@ -22,7 +23,7 @@
                         class="px-4 py-2 transition border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                         placeholder="Enter your name here" required>
                 </div>
-                
+
                 <div class="flex flex-col space-y-1">
                     <label for="email" class="text-sm font-semibold text-gray-600">Email</label>
                     <input type="email" name="email" value="{{ $user->email }}"
@@ -36,10 +37,17 @@
                         placeholder="Enter your new here" required>
                 </div>
                 <div class="flex flex-col space-y-1">
-                    <label for="avatar" class="text-sm font-semibold text-gray-600">Upload new avatar</label>
-                    <input type="file" name="avatar"
-                        class="px-4 py-2 transition border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                        placeholder="Enter your photo here" required>
+                    <label for="featured" class="text-sm font-semibold text-gray-600">Current profile photo</label>
+
+                    @if ($user->profile->avatar)
+                        <div class="mb-2">
+                            <img src="{{ asset($user->profile->avatar) }}" alt="current image"
+                                class="object-cover w-32 h-20 rounded-md">
+                        </div>
+                    @endif
+
+                    <input type="file" name="avatar" id="avatar"
+                        class="px-2 py-1 transition border border-gray-300 rounded-md file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
                 </div>
                 <div class="flex flex-col space-y-1">
                     <label for="facebook" class="text-sm font-semibold text-gray-600">Facebook</label>
