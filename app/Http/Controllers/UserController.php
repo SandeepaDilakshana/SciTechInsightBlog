@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Profile;
 use App\Models\User;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Routing\Controllers\HasMiddleware;
@@ -11,6 +12,7 @@ use Illuminate\Routing\Controllers\Middleware;
 
 class UserController extends Controller implements HasMiddleware
 {
+    use SoftDeletes;
 
     public static function middleware(): array
     {
@@ -94,7 +96,15 @@ class UserController extends Controller implements HasMiddleware
      */
     public function destroy(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        $notification = [
+            'message' => 'User has been moved to trash successfully!',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->route('users')->with($notification);
     }
 
     public function admin($id){
@@ -123,5 +133,40 @@ class UserController extends Controller implements HasMiddleware
         ];
 
         return redirect()->route('users')->with($notification);
+    }
+
+    public function usertrash()
+    {
+        $users = User::onlyTrashed()->latest()->paginate(10);
+
+        return view('admin.users.trash', compact('users'));
+    }
+
+    public function deleteforever($id)
+    {
+        $user = User::withTrashed()->find($id);
+
+        if ($user) {
+            $user->forceDelete();
+        }
+
+        $notification = [
+            'message' => 'User has been deleted successfully!',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->back()->with($notification);
+    }
+
+    public function restore($id)
+    {
+        $users = User::onlyTrashed()->find($id)->restore();
+
+        $notification = [
+            'message' => 'User has been restored successfully!',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->back()->with($notification);
     }
 }
