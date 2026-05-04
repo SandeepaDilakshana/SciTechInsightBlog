@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\TagsController;
 use App\Http\Controllers\UserController;
 use App\Models\User;
@@ -77,6 +78,11 @@ Route::middleware('auth')->group(function () {
 
     Route::controller(PasswordController::class)->group(function () {
         Route::put('/password_update', 'update')->name('password.update');
+    });
+
+    Route::controller(SettingsController::class)->group(function () {
+        Route::get('/settings', 'index')->name('settings');
+        Route::post('/settings/update', 'update')->name('settings.update');
     });
 
 });
