@@ -69,7 +69,10 @@ Route::middleware('auth')->group(function () {
         Route::post('/store', 'store')->name('user.store');
         Route::get('/admin/{id}', 'admin')->name('user.admin');
         Route::get('/not_admin/{id}', 'not_admin')->name('user.not_admin');
-        // Route::get('/profile', 'not_admin')->name('user.not_admin');
+        Route::get('/delete/{id}', 'destroy')->name('user.delete');
+        Route::get('/trashbin', 'usertrash')->name('user.trashbin');
+        Route::get('/trashed/{id}', 'deleteforever')->name('user.trash');
+        Route::get('/restore/{id}', 'restore')->name('user.restore');
     });
 
     Route::controller(PasswordController::class)->group(function () {
