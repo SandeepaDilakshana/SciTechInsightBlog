@@ -83,6 +83,12 @@
                                 <span class="mr-3"></span> Create New User
                             </a>
                         </li>
+                        <li>
+                        <a href="{{ route('settings') }}"
+                            class="flex items-center px-6 py-4 hover:bg-slate-800 transition {{ request()->routeIs('settings') ? 'bg-blue-600 border-r-4' : '' }}">
+                            <span class="mr-3"></span> Settings
+                        </a>
+                    </li>
                     @endif
                     <li>
                         <a href="{{ route('post.create') }}"
