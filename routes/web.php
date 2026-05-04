@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\TagsController;
 use App\Http\Controllers\UserController;
 use App\Models\User;
@@ -69,11 +70,19 @@ Route::middleware('auth')->group(function () {
         Route::post('/store', 'store')->name('user.store');
         Route::get('/admin/{id}', 'admin')->name('user.admin');
         Route::get('/not_admin/{id}', 'not_admin')->name('user.not_admin');
-        // Route::get('/profile', 'not_admin')->name('user.not_admin');
+        Route::get('/delete/{id}', 'destroy')->name('user.delete');
+        Route::get('/trashbin', 'usertrash')->name('user.trashbin');
+        Route::get('/trashed/{id}', 'deleteforever')->name('user.trash');
+        Route::get('/restore/{id}', 'restore')->name('user.restore');
     });
 
     Route::controller(PasswordController::class)->group(function () {
         Route::put('/password_update', 'update')->name('password.update');
+    });
+
+    Route::controller(SettingsController::class)->group(function () {
+        Route::get('/settings', 'index')->name('settings');
+        Route::post('/settings/update', 'update')->name('settings.update');
     });
 
 });
