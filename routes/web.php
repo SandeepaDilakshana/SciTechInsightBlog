@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProfileController;
@@ -69,6 +70,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/admin/{id}', 'admin')->name('user.admin');
         Route::get('/not_admin/{id}', 'not_admin')->name('user.not_admin');
         // Route::get('/profile', 'not_admin')->name('user.not_admin');
+    });
+
+    Route::controller(PasswordController::class)->group(function () {
+        Route::put('/password_update', 'update')->name('password.update');
     });
 
 });
