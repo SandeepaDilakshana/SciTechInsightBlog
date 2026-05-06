@@ -9,10 +9,8 @@
             <div class="item item-1">
                 <div class="img-fill">
                     <div class="text-content">
-                        <h6>lorem ipsum dolor sit amet!</h6>
-                        <h4>Quam temporibus accusam <br> hic ducimus quia</h4>
-                        <p>Magni deserunt dolorem consectetur adipisicing elit. Corporis molestiae optio, laudantium odio
-                            quod rerum maiores, omnis unde quae illo.</p>
+                        <h4>{{ $first_post->title }}</h4>
+                        <p>{!! $first_post->content !!}</p>
                         <a href="blog.html" class="filled-button">Read More</a>
                     </div>
                 </div>
@@ -22,11 +20,9 @@
             <div class="item item-2">
                 <div class="img-fill">
                     <div class="text-content">
-                        <h6>magni deserunt dolorem harum quas!</h6>
-                        <h4>Aliquam iusto harum <br> ratione porro odio</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At culpa cupiditate mollitia adipisci
-                            assumenda laborum eius quae quo excepturi, eveniet. Dicta nulla ea beatae consequuntur?</p>
-                        <a href="about.html" class="filled-button">About Us</a>
+                        <h4>{{ $second_post->title }}</h4>
+                        <p>{!! $second_post->content !!}</p>
+                        <a href="blog.html" class="filled-button">Read More</a>
                     </div>
                 </div>
             </div>
@@ -35,12 +31,9 @@
             <div class="item item-3">
                 <div class="img-fill">
                     <div class="text-content">
-                        <h6>alias officia qui quae vitae natus!</h6>
-                        <h4>Lorem ipsum dolor <br>sit amet, consectetur.</h4>
-                        <p>Vivamus ut tellus mi. Nulla nec cursus elit, id vulputate mi. Sed nec cursus augue. Phasellus
-                            lacinia ac sapien vitae dapibus. Mauris ut dapibus velit cras interdum nisl ac urna tempor
-                            mollis.</p>
-                        <a href="contact.html" class="filled-button">Contact Us</a>
+                        <h4>{{ $third_post->title }}</h4>
+                        <p>{!! $third_post->content !!}</p>
+                        <a href="blog.html" class="filled-button">Read More</a>
                     </div>
                 </div>
             </div>
@@ -54,12 +47,14 @@
             <div class="row" id="tabs">
                 <div class="col-md-4">
                     <ul>
-                        <li><a href='#tabs-1'>Lorem ipsum dolor sit amet, consectetur adipisicing <br> <small>John Doe
-                                    &nbsp;|&nbsp; 27.07.2020 10:10</small></a></li>
-                        <li><a href='#tabs-2'>Mauris lobortis quam id dictum dignissim <br> <small>John Doe &nbsp;|&nbsp;
-                                    27.07.2020 10:10</small></a></li>
-                        <li><a href='#tabs-3'>Class aptent taciti sociosqu ad litora torquent per <br> <small>John Doe
-                                    &nbsp;|&nbsp; 27.07.2020 10:10</small></a></li>
+                        <li><a href='#tabs-1'>{{ $first_post->title }}<br> <small>{{ $first_post->category->name }}
+                                    &nbsp;|&nbsp;
+                                    {{ $first_post->created_at->diffForHumans() }}</small></a></li>
+                        <li><a href='#tabs-2'>{{ $second_post->title }}<br> <small>{{ $second_post->category->name }}
+                                    &nbsp;|&nbsp;
+                                    {{ $second_post->created_at->diffForHumans() }}</small></a></li>
+                        <li><a href='#tabs-3'>{{ $third_post->title }}<br> <small>{{ $third_post->category->name }}
+                                    &nbsp;|&nbsp; {{ $third_post->created_at->diffForHumans() }}</small></a></li>
                     </ul>
 
                     <br>
@@ -74,26 +69,19 @@
                 <div class="col-md-8">
                     <section class='tabs-content'>
                         <article id='tabs-1'>
-                            <img src="{{ asset('frontend/assets/images/blog-image-1-940x460.jpg') }}" alt="">
-                            <h4><a href="blog-details.html">Lorem ipsum dolor sit amet, consectetur adipisicing.</a></h4>
-                            <p>Sed ut dolor in augue cursus ultrices. Vivamus mauris turpis, auctor vel facilisis in,
-                                tincidunt vel diam. Sed vitae scelerisque orci. Nunc non magna orci. Aliquam commodo mauris
-                                ante, quis posuere nibh vestibulum sit amet.</p>
+                            <img src="{{ $first_post->featured }}" alt="{{ $first_post->title }}">
+                            <h4><a href="blog-details.html">{{ $first_post->title }}</a></h4>
+                            <p>{!! $first_post->content !!}</p>
                         </article>
                         <article id='tabs-2'>
-                            <img src="{{ asset('frontend/assets/images/blog-image-2-940x460.jpg') }}" alt="">
-                            <h4><a href="blog-details.html">Mauris lobortis quam id dictum dignissim</a></h4>
-                            <p>Sed ut dolor in augue cursus ultrices. Vivamus mauris turpis, auctor vel facilisis in,
-                                tincidunt vel diam. Sed vitae scelerisque orci. Nunc non magna orci. Aliquam commodo mauris
-                                ante, quis posuere nibh vestibulum sit amet</p>
+                            <img src="{{ $second_post->featured }}" alt="{{ $second_post->title }}">
+                            <h4><a href="blog-details.html">{{ $second_post->title }}</a></h4>
+                            <p>{!! $second_post->content !!}</p>
                         </article>
                         <article id='tabs-3'>
-                            <img src="{{ asset('frontend/assets/images/blog-image-3-940x460.jpg') }}" alt="">
-                            <h4><a href="blog-details.html">Class aptent taciti sociosqu ad litora torquent per</a></h4>
-                            <p>Mauris lobortis quam id dictum dignissim. Donec pellentesque erat dolor, cursus dapibus
-                                turpis hendrerit quis. Suspendisse at suscipit arcu. Nulla sed erat lectus. Nulla facilisi.
-                                In sit amet neque sapien. Donec scelerisque mi at gravida efficitur. Nunc lacinia a est eu
-                                malesuada. Curabitur eleifend elit sapien, sed pulvinar orci luctus eget.
+                            <img src="{{ $third_post->featured }}" alt="{{ $third_post->title }}">
+                            <h4><a href="blog-details.html">{{ $third_post->title }}</a></h4>
+                            <p>{!! $third_post->content !!}
                             </p>
                         </article>
                     </section>
