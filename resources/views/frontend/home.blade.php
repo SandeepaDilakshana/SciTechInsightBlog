@@ -1,5 +1,7 @@
 @extends('frontend.layouts.master')
 
+@section('title', 'Home')
+
 @section('content')
     <!-- Page Content -->
     <!-- Banner Starts Here -->
@@ -108,7 +110,7 @@
                             <h2>Get to know <em>about us</em></h2>
                             <p>Curabitur pulvinar sem a leo tempus facilisis. Sed non sagittis neque. Nulla conse quat
                                 tellus nibh, id molestie felis sagittis ut. Nam ullamcorper tempus ipsum in cursus</p>
-                            <a href="about.html" class="filled-button">Read More</a>
+                            <a href="{{ route('about.show') }}" class="filled-button">Read More</a>
                         </div>
                     </div>
                 </div>
