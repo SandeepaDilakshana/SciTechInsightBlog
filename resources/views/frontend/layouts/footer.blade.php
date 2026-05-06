@@ -11,7 +11,7 @@
                     <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                 </ul>
             </div>
-            <div class="col-md-3 footer-item">
+            {{-- <div class="col-md-3 footer-item">
                 <h4>Useful Links</h4>
                 <ul class="menu-list">
                     <li><a href="#">Vivamus ut tellus mi</a></li>
@@ -19,14 +19,14 @@
                     <li><a href="#">Vulputate sed nec</a></li>
                     <li><a href="#">Cursus augue hasellus</a></li>
                 </ul>
-            </div>
+            </div> --}}
             <div class="col-md-3 footer-item">
                 <h4>Additional Pages</h4>
                 <ul class="menu-list">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="{{ route('home') }}">Home</a></li>
+                    <li><a href="{{ route('about.show') }}">About Us</a></li>
+                    <li><a href="{{ route('blog.show') }}">Blog</a></li>
+                    <li><a href="{{ route('contact.show') }}">Contact Us</a></li>
                 </ul>
             </div>
             <div class="col-md-3 footer-item last-item">
