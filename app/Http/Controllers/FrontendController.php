@@ -15,4 +15,19 @@ class FrontendController extends Controller
                                     ->with('second_post', Post::orderBy('created_at', 'desc')->skip(1)->take(1)->get()->first())
                                     ->with('third_post', Post::orderBy('created_at', 'desc')->skip(2)->take(1)->get()->first());
     }
+
+    public function contact()
+    {
+        return view('frontend.contact');
+    }
+
+    public function about()
+    {
+        return view('frontend.about');
+    }
+
+    public function blog()
+    {
+        return view('frontend.blog');
+    }
 }
