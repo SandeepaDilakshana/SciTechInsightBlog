@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-                <h2>Blog <em> Application</em></h2>
+                <h2>Blog <em> Application</em></h2> <!--title change kale na -->
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,9 +23,6 @@
                         <a class="nav-link" href="about.html">About Us</a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="team.html">Authors</a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="contact.html">Contact Us</a>
                     </li>
