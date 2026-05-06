@@ -3,8 +3,13 @@
         <div class="row">
             <div class="col-md-8 col-xs-12">
                 <ul class="left-info">
-                    <li><a href="#"><i class="fa fa-envelope"></i>contact@company.com</a></li>
-                    <li><a href="#"><i class="fa fa-phone"></i>123-456-7890</a></li>
+                    <li><a href="mailto:info_laravel@gmail.com"><i class="fa fa-envelope"></i>info_laravel@gmail.com</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" onclick="copyToClipboard('0791234568')" title="Click to Copy">
+                            <i class="fa fa-phone"></i> <span id="phone-num">0791234568</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div class="col-md-4">
@@ -17,3 +22,13 @@
         </div>
     </div>
 </div>
+
+<script>
+    function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(function() {
+            alert('Phone number copied to clipboard: ' + text);
+        }, function(err) {
+            console.error('Could not copy text: ', err);
+        });
+    }
+</script>
