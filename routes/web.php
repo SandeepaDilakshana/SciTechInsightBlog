@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingsController;
@@ -10,8 +11,12 @@ use App\Http\Controllers\UserController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('frontend.home');
+// });
+
+Route::controller(FrontendController::class)->group(function(){
+    Route::get('/', 'index')->name('home');
 });
 
 Route::get('/test', function () {
