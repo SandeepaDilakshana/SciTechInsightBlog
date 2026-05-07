@@ -12,10 +12,13 @@ class FrontendController extends Controller
 {
     public function index()
     {
-        return view('frontend.home')->with('title', Setting::first()->site_name)
-            ->with('first_post', Post::orderBy('created_at', 'desc')->first())
-            ->with('second_post', Post::orderBy('created_at', 'desc')->skip(1)->take(1)->get()->first())
-            ->with('third_post', Post::orderBy('created_at', 'desc')->skip(2)->take(1)->get()->first());
+        $setting = Setting::first();
+        $posts = Post::with('user')->orderBy('created_at', 'desc')->take(3)->get();
+
+        return view('frontend.home')->with('title', $setting->site_name)
+            ->with('first_post', $posts->get(0))
+            ->with('second_post', $posts->get(1))
+            ->with('third_post', $posts->get(2));
     }
 
     public function contact()
@@ -37,9 +40,12 @@ class FrontendController extends Controller
 
     public function blog()
     {
-        return view('frontend.blog')->with('first_post', Post::orderBy('created_at', 'desc')->first())
-            ->with('second_post', Post::orderBy('created_at', 'desc')->skip(1)->take(1)->get()->first())
-            ->with('third_post', Post::orderBy('created_at', 'desc')->skip(2)->take(1)->get()->first());
+        $posts = Post::with('user')->orderBy('created_at', 'desc')->take(3)->get();
+
+        return view('frontend.blog')
+            ->with('first_post', $posts->get(0))
+            ->with('second_post', $posts->get(1))
+            ->with('third_post', $posts->get(2));
     }
 
     public function blogDetails($slug)
