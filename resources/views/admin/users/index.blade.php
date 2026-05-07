@@ -21,7 +21,8 @@
                         <th class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">Name</th>
                         <th class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                             Permissions</th>
-                        <th class="px-6 py-3 text-xs font-medium tracking-wider text-center text-gray-500 uppercase">Move to Trash
+                        <th class="px-6 py-3 text-xs font-medium tracking-wider text-center text-gray-500 uppercase">Move to
+                            Trash
                         </th>
                     </tr>
                 </thead>
@@ -29,8 +30,8 @@
                     @forelse ($users as $user)
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <img src="{{ asset($user->profile->avatar) }}" class="object-cover rounded-full"
-                                    width="50" height="50">
+                                <img src="{{ $user->profile ? asset($user->profile->avatar) : asset('uploads\avatars\836.jpg') }}"
+                                    class="object-cover rounded-full" width="50" height="50">
                             </td>
                             <td class="px-6 py-4 text-sm text-gray-900 whitespace-nowrap">{{ $user->name }}</td>
                             <td class="px-6 py-4 text-sm text-gray-900 whitespace-nowrap">
@@ -72,22 +73,22 @@
     </div>
 
     <script>
-    function confirmDelete(e, route) {
-        e.preventDefault();
+        function confirmDelete(e, route) {
+            e.preventDefault();
 
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "Do you want to delete this user!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'Yes, delete it!',
-            cancelButtonText: 'No, cancel!',
-            reverseButtons: true
-        }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href = route;
-            }
-        });
-    }
-</script>
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "Do you want to delete this user!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'No, cancel!',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = route;
+                }
+            });
+        }
+    </script>
 @endsection
