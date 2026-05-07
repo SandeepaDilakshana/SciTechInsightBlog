@@ -17,8 +17,8 @@
             <div class="col-md-3 footer-item">
                 <h4>Other Links</h4>
                 <ul class="menu-list">
-                    <li><a href="#">Categories</a></li>
-                    <li><a href="#">Tags</a></li>
+                    <li><a href="{{ route('blog.categories') }}">Categories</a></li>
+                    <li><a href="{{ route('blog.tags') }}">Tags</a></li>
                 </ul>
             </div>
             <div class="col-md-3 footer-item">
