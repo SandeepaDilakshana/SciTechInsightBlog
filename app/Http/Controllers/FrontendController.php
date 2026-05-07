@@ -49,7 +49,7 @@ class FrontendController extends Controller
                 ->orWhere('content', 'LIKE', "%{$search}%");
         }
 
-        $posts = $query->paginate(8);
+        $posts = $query->paginate(3);
 
         return view('frontend.blog')->with('posts', $posts);
     }
@@ -61,16 +61,35 @@ class FrontendController extends Controller
         return view('frontend.blog_details')->with('post', $post);
     }
 
-    public function allCategories(){
+    public function allCategories()
+    {
         $categories = Category::withCount('posts')->get();
 
         return view('frontend.categories', compact('categories'));
     }
 
-
-    public function allTags(){
+    public function allTags()
+    {
         $tags = Tag::withCount('posts')->get();
 
         return view('frontend.tags', compact('tags'));
+    }
+
+    public function categoryPosts($id)
+    {
+        $category = Category::findOrFail($id);
+        $posts = Post::where('category_id', $category->id)->orderBy('created_at', 'desc')->paginate(3);
+        $title = 'Category: '.$category->name;
+
+        return view('frontend.post_list', compact('posts', 'title'));
+    }
+
+    public function tagPosts($id)
+    {
+        $tag = Tag::findOrFail($id);
+        $posts = $tag->posts()->orderBy('created_at', 'desc')->paginate(3);
+        $title = 'Tag: #'.$tag->tag;
+
+        return view('frontend.post_list', compact('posts', 'title'));
     }
 }
