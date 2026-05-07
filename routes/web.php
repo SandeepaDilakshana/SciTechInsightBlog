@@ -20,6 +20,7 @@ Route::controller(FrontendController::class)->group(function(){
     Route::get('/contact', 'contact')->name('contact.show');
     Route::get('/about', 'about')->name('about.show');
     Route::get('/blog', 'blog')->name('blog.show');
+    Route::get('/blog/{slug}', 'blogDetails')->name('blog.details');
 });
 
 Route::get('/test', function () {
