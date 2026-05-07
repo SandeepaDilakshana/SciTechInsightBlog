@@ -11,9 +11,9 @@ use App\Http\Controllers\UserController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/', function () {
-//     return view('frontend.home');
-// });
+Route::get('/login', function () {
+    return view('welcome');
+});
 
 Route::controller(FrontendController::class)->group(function(){
     Route::get('/', 'index')->name('home');
