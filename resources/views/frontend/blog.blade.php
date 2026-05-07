@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <h1>Read our Blog</h1>
-                    <span>Lorem ipsum dolor sit amet consectetur</span>
+                    <span>Explore stories, tips, and insights from our creative community.</span>
                 </div>
             </div>
         </div>
@@ -20,17 +20,17 @@
                 <div class="col-md-8">
                     <section class='tabs-content'>
                         <article id='tabs-1'>
-                            <img src="{{ asset('frontend/assets/images/blog-image-1-940x460.jpg') }}" alt="">
-                            <h4><a href="blog-details.html">Lorem ipsum dolor sit amet, consectetur adipisicing.</a></h4>
+                            <img src="{{ $first_post->featured }}" alt="{{ $first_post->title }}">
+                            <h4><a href="{{ route('blog.details', $first_post->slug) }}">{{ $first_post->title }}"</a></h4>
                             <div style="margin-bottom:10px;">
-                                <span>John Doe &nbsp;|&nbsp; 27.07.2020 10:10 &nbsp;|&nbsp; 15 comments</span>
+                                <span>{{ $first_post->category->name }} &nbsp;|&nbsp;
+                                    {{ $first_post->created_at->diffForHumans() }} &nbsp;&nbsp;</span>
                             </div>
-                            <p>Sed ut dolor in augue cursus ultrices. Vivamus mauris turpis, auctor vel facilisis in,
-                                tincidunt vel diam. Sed vitae scelerisque orci. Nunc non magna orci. Aliquam commodo mauris
-                                ante, quis posuere nibh vestibulum sit amet.</p>
+                            <p>{!! Str::limit($first_post->content, 200) !!}</p>
                             <br>
                             <div>
-                                <a href="blog-details.html" class="filled-button">Continue Reading</a>
+                                <a href="{{ route('blog.details', $first_post->slug) }}" class="filled-button">Continue
+                                    Reading</a>
                             </div>
                         </article>
 
@@ -39,17 +39,18 @@
                         <br>
 
                         <article id='tabs-2'>
-                            <img src="{{ asset('frontend/assets/images/blog-image-2-940x460.jpg') }}" alt="">
-                            <h4><a href="blog-details.html">Mauris lobortis quam id dictum dignissim</a></h4>
+                            <img src="{{ $second_post->featured }}" alt="{{ $second_post->title }}">
+                            <h4><a href="{{ route('blog.details', $second_post->slug) }}">{{ $second_post->title }}"</a>
+                            </h4>
                             <div style="margin-bottom:10px;">
-                                <span>John Doe &nbsp;|&nbsp; 27.07.2020 10:10 &nbsp;|&nbsp; 15 comments</span>
+                                <span>{{ $second_post->category->name }} &nbsp;|&nbsp;
+                                    {{ $second_post->created_at->diffForHumans() }} &nbsp;&nbsp;</span>
                             </div>
-                            <p>Sed ut dolor in augue cursus ultrices. Vivamus mauris turpis, auctor vel facilisis in,
-                                tincidunt vel diam. Sed vitae scelerisque orci. Nunc non magna orci. Aliquam commodo mauris
-                                ante, quis posuere nibh vestibulum sit amet</p>
+                            <p>{!! Str::limit($second_post->content, 200) !!}</p>
                             <br>
                             <div>
-                                <a href="blog-details.html" class="filled-button">Continue Reading</a>
+                                <a href="{{ route('blog.details', $second_post->slug) }}" class="filled-button">Continue
+                                    Reading</a>
                             </div>
                         </article>
                     </section>
@@ -70,29 +71,32 @@
 
                     <ul>
                         <li>
-                            <h5 style="margin-bottom:10px;"><a href="blog-details.html">Dolorum corporis ullam, reiciendis
-                                    inventore est repudiandae</a></h5>
-                            <small><i class="fa fa-user"></i> John Doe &nbsp;|&nbsp; <i class="fa fa-calendar"></i>
-                                27.07.2020 10:10</small>
+                            <h5 style="margin-bottom:10px;"><a
+                                    href="{{ route('blog.details', $first_post->slug) }}">{{ $first_post->title }}</a>
+                            </h5>
+                            <small>{{ $first_post->category->name }} &nbsp;|&nbsp; <i class="fa fa-calendar"></i>
+                                {{ $first_post->created_at->diffForHumans() }}</small>
                         </li>
 
                         <li><br></li>
 
                         <li>
-                            <h5 style="margin-bottom:10px;"><a href="blog-details.html">Culpa ab quasi in rerum dolorum
-                                    impedit expedita</a></h5>
-                            <small><i class="fa fa-user"></i> John Doe &nbsp;|&nbsp; <i class="fa fa-calendar"></i>
-                                27.07.2020 10:10</small>
+                            <h5 style="margin-bottom:10px;"><a
+                                    href="{{ route('blog.details', $second_post->slug) }}">{{ $second_post->title }}</a>
+                            </h5>
+                            <small>{{ $second_post->category->name }} &nbsp;|&nbsp; <i class="fa fa-calendar"></i>
+                                {{ $second_post->created_at->diffForHumans() }}</small>
                         </li>
 
                         <li><br></li>
 
                         <li>
-                            <h5 style="margin-bottom:10px;"><a href="blog-details.html">Explicabo soluta corrupti dolor
-                                    doloribus optio dolorum</a></h5>
+                            <h5 style="margin-bottom:10px;"><a
+                                    href="{{ route('blog.details', $third_post->slug) }}">{{ $third_post->title }}</a>
+                            </h5>
 
-                            <small><i class="fa fa-user"></i> John Doe &nbsp;|&nbsp; <i class="fa fa-calendar"></i>
-                                27.07.2020 10:10</small>
+                            <small>{{ $third_post->category->name }} &nbsp;|&nbsp; <i class="fa fa-calendar"></i>
+                                {{ $third_post->created_at->diffForHumans() }}</small>
                         </li>
                     </ul>
                 </div>
