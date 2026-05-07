@@ -62,7 +62,7 @@
                         <div class="col-md-6">
                             <div class="count-area-content">
                                 <div class="count-digit">{{ $postCount }}</div>
-                                <div class="count-title">Articles Published</div>
+                                <div class="count-title">Articles</div>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -80,7 +80,7 @@
                         <div class="col-md-6">
                             <div class="count-area-content">
                                 <div class="count-digit">{{ $categoryCount }}</div>
-                                <div class="count-title">Topic Categories</div>
+                                <div class="count-title">Categories</div>
                             </div>
                         </div>
                     </div>
