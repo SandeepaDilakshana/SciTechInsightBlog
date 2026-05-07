@@ -40,7 +40,6 @@ Route::middleware('auth')->group(function () {
     Route::controller(ProfileController::class)->group(function () {
         Route::get('/profile', 'index')->name('profile');
         Route::get('/profile', 'edit')->name('profile.edit');
-        //Route::patch('/profile',  'update')->name('profile.update');
         Route::delete('/profile', 'destroy')->name('profile.destroy');
         Route::post('/profile/update', 'update')->name('profile.update');
     });
@@ -59,7 +58,6 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::controller(CategoriesController::class)->prefix('admin/category')->group(function () {
-        // Route::get('/create', 'create')->name('category.create');
         Route::post('/store', 'store')->name('category.store');
         Route::get('/categories', 'index')->name('categories');
         Route::get('/edit/{id}', 'edit')->name('category.edit');
@@ -70,7 +68,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/restore/{id}', 'restore')->name('category.restore');
     });
 
-    Route::controller(TagsController::class)->prefix('tag')->group(function () {
+    Route::controller(TagsController::class)->prefix('admin/tag')->group(function () {
         Route::get('/tags', 'index')->name('tags');
         Route::post('/store', 'store')->name('tag.store');
         Route::get('/delete/{id}', 'destroy')->name('tag.delete');
