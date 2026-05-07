@@ -23,7 +23,9 @@
                             <img src="{{ $first_post->featured }}" alt="{{ $first_post->title }}">
                             <h4><a href="{{ route('blog.details', $first_post->slug) }}">{{ $first_post->title }}"</a></h4>
                             <div style="margin-bottom:10px;">
-                                <span>{{ $first_post->category->name }} &nbsp;|&nbsp;
+                                <span><i
+                                        class="fa fa-user"></i>&nbsp;&nbsp;{{ $first_post->user->name }}&nbsp;|&nbsp;{{ $first_post->category->name }}
+                                    &nbsp;|&nbsp;
                                     {{ $first_post->created_at->diffForHumans() }} &nbsp;&nbsp;</span>
                             </div>
                             <p>{!! Str::limit($first_post->content, 200) !!}</p>
@@ -43,7 +45,9 @@
                             <h4><a href="{{ route('blog.details', $second_post->slug) }}">{{ $second_post->title }}"</a>
                             </h4>
                             <div style="margin-bottom:10px;">
-                                <span>{{ $second_post->category->name }} &nbsp;|&nbsp;
+                                <span><i
+                                        class="fa fa-user"></i>&nbsp;&nbsp;{{ $second_post->user->name }}&nbsp;|&nbsp;{{ $second_post->category->name }}
+                                    &nbsp;|&nbsp;
                                     {{ $second_post->created_at->diffForHumans() }} &nbsp;&nbsp;</span>
                             </div>
                             <p>{!! Str::limit($second_post->content, 200) !!}</p>
