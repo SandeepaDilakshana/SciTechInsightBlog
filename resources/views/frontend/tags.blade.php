@@ -25,7 +25,7 @@
 
                 <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 30px;">
                     @forelse($tags as $tag)
-                        <a href="#"
+                        <a href="{{ route('tag.posts', ['id' => $tag->id]) }}"
                            style="
                                 display: inline-block;
                                 background: #ffffff;
