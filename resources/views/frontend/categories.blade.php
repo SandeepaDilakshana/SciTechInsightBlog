@@ -19,7 +19,7 @@
                     <i class="fa fa-folder-open" style="font-size: 40px; color: #a4c639; margin-bottom: 15px;"></i>
                     <h4>{{ $category->name }}</h4>
                     <p>{{ $category->posts_count }} Articles available</p>
-                    <a href="#" class="filled-button" style="margin-top: 15px;">View Posts</a>
+                    <a href="{{ route('category.posts', ['id' => $category->id]) }}" class="filled-button" style="margin-top: 15px;">View Posts</a>
                 </div>
             </div>
             @endforeach
