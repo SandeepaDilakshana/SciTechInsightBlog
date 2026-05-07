@@ -23,6 +23,8 @@ Route::controller(FrontendController::class)->group(function(){
     Route::get('/blog/{slug}', 'blogDetails')->name('blog.details');
     Route::get('/categories', 'allCategories')->name('blog.categories');
     Route::get('/tags', 'allTags')->name('blog.tags');
+    Route::get('/category/{id}', 'categoryPosts')->name('category.posts');
+    Route::get('/tag/{id}', 'tagPosts')->name('tag.posts');
 });
 
 Route::get('/test', function () {
