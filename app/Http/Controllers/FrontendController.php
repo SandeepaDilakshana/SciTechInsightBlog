@@ -60,4 +60,17 @@ class FrontendController extends Controller
 
         return view('frontend.blog_details')->with('post', $post);
     }
+
+    public function allCategories(){
+        $categories = Category::withCount('posts')->get();
+
+        return view('frontend.categories', compact('categories'));
+    }
+
+
+    public function allTags(){
+        $tags = Tag::withCount('posts')->get();
+
+        return view('frontend.tags', compact('tags'));
+    }
 }
