@@ -11,7 +11,7 @@ use Illuminate\Support\Str;
 class Post extends Model
 {
     use SoftDeletes;
-    
+
     protected $fillable = [
         'title',
         'content',
@@ -44,5 +44,10 @@ class Post extends Model
     public function tags(): BelongsToMany
     {
         return $this-> belongsToMany(Tag::class);
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }
