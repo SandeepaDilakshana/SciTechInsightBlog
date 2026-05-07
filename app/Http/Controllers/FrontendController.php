@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\Setting;
 use App\Models\Tag;
 use App\Models\User;
+use Illuminate\Http\Request;
 
 class FrontendController extends Controller
 {
@@ -38,18 +39,25 @@ class FrontendController extends Controller
         return view('frontend.about', compact('postCount', 'categoryCount', 'tagCount', 'userCount'));
     }
 
-    public function blog()
+    public function blog(Request $request)
     {
-        $posts = Post::with('user')->orderBy('created_at', 'desc')->take(3)->get();
+        $query = Post::with(['user', 'category'])->orderBy('created_at', 'desc');
 
-        return view('frontend.blog')
-            ->with('first_post', $posts->get(0))
-            ->with('second_post', $posts->get(1))
-            ->with('third_post', $posts->get(2));
+        if ($request->has('q')) {
+            $search = $request->get('q');
+            $query->where('title', 'LIKE', "%{$search}%")
+                ->orWhere('content', 'LIKE', "%{$search}%");
+        }
+
+        $posts = $query->paginate(8);
+
+        return view('frontend.blog')->with('posts', $posts);
     }
 
     public function blogDetails($slug)
     {
-        return view('frontend.blog_details')->with('post', Post::where('slug', $slug)->firstOrFail());
+        $post = Post::with(['user', 'category', 'tags'])->where('slug', $slug)->firstOrFail();
+
+        return view('frontend.blog_details')->with('post', $post);
     }
 }
