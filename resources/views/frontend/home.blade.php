@@ -12,8 +12,8 @@
                 <div class="img-fill">
                     <div class="text-content">
                         <h4>{{ $first_post->title }}</h4>
-                        <p>{!! $first_post->content !!}</p>
-                        <a href="blog.html" class="filled-button">Read More</a>
+                        <p>{!! Str::limit($first_post->content, 200) !!}</p>
+                        <a href="{{ route('blog.show') }}" class="filled-button">More Blogs</a>
                     </div>
                 </div>
             </div>
@@ -23,8 +23,8 @@
                 <div class="img-fill">
                     <div class="text-content">
                         <h4>{{ $second_post->title }}</h4>
-                        <p>{!! $second_post->content !!}</p>
-                        <a href="blog.html" class="filled-button">Read More</a>
+                        <p>{!! Str::limit($second_post->content, 200) !!}</p>
+                        <a href="{{ route('blog.show') }}" class="filled-button">More Blogs</a>
                     </div>
                 </div>
             </div>
@@ -34,8 +34,8 @@
                 <div class="img-fill">
                     <div class="text-content">
                         <h4>{{ $third_post->title }}</h4>
-                        <p>{!! $third_post->content !!}</p>
-                        <a href="blog.html" class="filled-button">Read More</a>
+                        <p>{!! Str::limit($third_post->content, 200) !!}</p>
+                        <a href="{{ route('blog.show') }}" class="filled-button">More Blogs</a>
                     </div>
                 </div>
             </div>
@@ -62,28 +62,28 @@
                     <br>
 
                     <div class="text-center">
-                        <a href="blog.html" class="filled-button">Read More</a>
+                        <a href="{{ route('blog.show') }}" class="filled-button">Read More</a>
                     </div>
 
                     <br>
                 </div>
-
+{{-- {!! Str::limit($first_post->content, 200) !!} --}}
                 <div class="col-md-8">
                     <section class='tabs-content'>
                         <article id='tabs-1'>
                             <img src="{{ $first_post->featured }}" alt="{{ $first_post->title }}">
-                            <h4><a href="blog-details.html">{{ $first_post->title }}</a></h4>
-                            <p>{!! $first_post->content !!}</p>
+                            <h4>{{ $first_post->title }}</h4>
+                            <p>{!! Str::limit($first_post->content, 200) !!}</p>
                         </article>
                         <article id='tabs-2'>
                             <img src="{{ $second_post->featured }}" alt="{{ $second_post->title }}">
-                            <h4><a href="blog-details.html">{{ $second_post->title }}</a></h4>
-                            <p>{!! $second_post->content !!}</p>
+                            <h4>{{ $second_post->title }}</h4>
+                            <p>{!! Str::limit($second_post->content, 200) !!}</p>
                         </article>
                         <article id='tabs-3'>
                             <img src="{{ $third_post->featured }}" alt="{{ $third_post->title }}">
-                            <h4><a href="blog-details.html">{{ $third_post->title }}</a></h4>
-                            <p>{!! $third_post->content !!}
+                            <h4>{{ $third_post->title }}</h4>
+                            <p>{!! Str::limit($third_post->content, 200) !!}
                             </p>
                         </article>
                     </section>
@@ -108,8 +108,7 @@
                         <div class="right-content">
                             <span>Who we are</span>
                             <h2>Get to know <em>about us</em></h2>
-                            <p>Curabitur pulvinar sem a leo tempus facilisis. Sed non sagittis neque. Nulla conse quat
-                                tellus nibh, id molestie felis sagittis ut. Nam ullamcorper tempus ipsum in cursus</p>
+                            <p>A hub for creative storytelling and expert insights. We believe in the power of words to change perspectives and build a better-informed community.</p>
                             <a href="{{ route('about.show') }}" class="filled-button">Read More</a>
                         </div>
                     </div>
