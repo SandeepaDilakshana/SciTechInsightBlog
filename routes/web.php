@@ -21,6 +21,8 @@ Route::controller(FrontendController::class)->group(function(){
     Route::get('/about', 'about')->name('about.show');
     Route::get('/blog', 'blog')->name('blog.show');
     Route::get('/blog/{slug}', 'blogDetails')->name('blog.details');
+    Route::get('/categories', 'allCategories')->name('blog.categories');
+    Route::get('/tags', 'allTags')->name('blog.tags');
 });
 
 Route::get('/test', function () {
