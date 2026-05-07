@@ -3,23 +3,24 @@
         <div class="row">
             <div class="col-md-3 footer-item">
                 <h4>Blog Application</h4>
-                <p>Vivamus tellus mi. Nulla ne cursus elit,vulputate. Sed ne cursus augue hasellus lacinia sapien
-                    vitae.</p>
+                <p>Bringing you the best stories and latest news right at your fingertips. Explore, read, and grow with
+                    the Blog Application community.</p>
                 <ul class="social-icons">
-                    <li><a rel="nofollow" href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                    <li><a href="https://www.facebook.com/share/1AnrEiye4z/" target="_blank" rel="noopener noreferrer"><i
+                                class="fa fa-facebook"></i></a></li>
+                    <li><a href="https://x.com/SandeepaDila" target="_blank" rel="noopener noreferrer"><i
+                                class="fa fa-twitter"></i></a></li>
+                    <li><a href="https://www.linkedin.com/in/sandeepa-dilakshana-666b29283" target="_blank"
+                            rel="noopener noreferrer"><i class="fa fa-linkedin"></i></a></li>
                 </ul>
             </div>
-            {{-- <div class="col-md-3 footer-item">
-                <h4>Useful Links</h4>
+            <div class="col-md-3 footer-item">
+                <h4>Other Links</h4>
                 <ul class="menu-list">
-                    <li><a href="#">Vivamus ut tellus mi</a></li>
-                    <li><a href="#">Nulla nec cursus elit</a></li>
-                    <li><a href="#">Vulputate sed nec</a></li>
-                    <li><a href="#">Cursus augue hasellus</a></li>
+                    <li><a href="#">Categories</a></li>
+                    <li><a href="#">Tags</a></li>
                 </ul>
-            </div> --}}
+            </div>
             <div class="col-md-3 footer-item">
                 <h4>Additional Pages</h4>
                 <ul class="menu-list">
