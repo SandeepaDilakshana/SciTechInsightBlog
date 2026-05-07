@@ -49,13 +49,15 @@
             <div class="row" id="tabs">
                 <div class="col-md-4">
                     <ul>
-                        <li><a href='#tabs-1'>{{ $first_post->title }}<br> <small>{{ $first_post->category->name }}
+                        <li><a href='#tabs-1'>{{ $first_post->title }}<br><small>{{ $first_post->user->name }}<br>{{ $first_post->category->name }}
                                     &nbsp;|&nbsp;
                                     {{ $first_post->created_at->diffForHumans() }}</small></a></li>
-                        <li><a href='#tabs-2'>{{ $second_post->title }}<br> <small>{{ $second_post->category->name }}
+                        <li><a href='#tabs-2'>{{ $second_post->title }}<br>
+                                <small>{{ $second_post->user->name }}<br>{{ $second_post->category->name }}
                                     &nbsp;|&nbsp;
                                     {{ $second_post->created_at->diffForHumans() }}</small></a></li>
-                        <li><a href='#tabs-3'>{{ $third_post->title }}<br> <small>{{ $third_post->category->name }}
+                        <li><a href='#tabs-3'>{{ $third_post->title }}<br>
+                                <small>{{ $third_post->user->name }}<br>{{ $third_post->category->name }}
                                     &nbsp;|&nbsp; {{ $third_post->created_at->diffForHumans() }}</small></a></li>
                     </ul>
 
@@ -67,22 +69,25 @@
 
                     <br>
                 </div>
-{{-- {!! Str::limit($first_post->content, 200) !!} --}}
+
                 <div class="col-md-8">
                     <section class='tabs-content'>
                         <article id='tabs-1'>
                             <img src="{{ $first_post->featured }}" alt="{{ $first_post->title }}">
                             <h4>{{ $first_post->title }}</h4>
+                            <small><i class="fa fa-user"></i>&nbsp;&nbsp;{{ $first_post->user->name }}</small>
                             <p>{!! Str::limit($first_post->content, 200) !!}</p>
                         </article>
                         <article id='tabs-2'>
                             <img src="{{ $second_post->featured }}" alt="{{ $second_post->title }}">
                             <h4>{{ $second_post->title }}</h4>
+                            <small><i class="fa fa-user"></i>&nbsp;&nbsp;{{ $second_post->user->name }}</small>
                             <p>{!! Str::limit($second_post->content, 200) !!}</p>
                         </article>
                         <article id='tabs-3'>
                             <img src="{{ $third_post->featured }}" alt="{{ $third_post->title }}">
                             <h4>{{ $third_post->title }}</h4>
+                            <small><i class="fa fa-user"></i>&nbsp;&nbsp;{{ $third_post->user->name }}</small>
                             <p>{!! Str::limit($third_post->content, 200) !!}
                             </p>
                         </article>
@@ -108,7 +113,8 @@
                         <div class="right-content">
                             <span>Who we are</span>
                             <h2>Get to know <em>about us</em></h2>
-                            <p>A hub for creative storytelling and expert insights. We believe in the power of words to change perspectives and build a better-informed community.</p>
+                            <p>A hub for creative storytelling and expert insights. We believe in the power of words to
+                                change perspectives and build a better-informed community.</p>
                             <a href="{{ route('about.show') }}" class="filled-button">Read More</a>
                         </div>
                     </div>
