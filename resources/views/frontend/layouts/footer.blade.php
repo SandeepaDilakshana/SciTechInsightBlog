@@ -33,7 +33,14 @@
             <div class="col-md-3 footer-item last-item">
                 <h4>Contact Us</h4>
                 <div class="contact-form">
-                    <form id="contact footer-contact" action="" method="post">
+                    @if (session('success'))
+                        <div class="alert alert-success" style="padding: 10px; font-size: 14px;">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
+                    <form id="contact-footer-contact" action="{{ route('contact.footer.submit') }}" method="POST">
+                        @csrf
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12">
                                 <fieldset>
@@ -43,8 +50,8 @@
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12">
                                 <fieldset>
-                                    <input name="email" type="text" class="form-control" id="email"
-                                        pattern="[^ @]*@[^ @]*" placeholder="E-Mail Address" required="">
+                                    <input name="email" type="email" class="form-control" id="email"
+                                        placeholder="E-Mail Address" required="">
                                 </fieldset>
                             </div>
                             <div class="col-lg-12">
@@ -54,8 +61,7 @@
                             </div>
                             <div class="col-lg-12">
                                 <fieldset>
-                                    <button type="submit" id="form-submit" class="filled-button">Send
-                                        Message</button>
+                                    <button type="submit" id="form-submit" class="filled-button">Send Message</button>
                                 </fieldset>
                             </div>
                         </div>
