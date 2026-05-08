@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactMail;
 use App\Models\Category;
+use App\Models\Contact;
 use App\Models\Post;
 use App\Models\Setting;
 use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class FrontendController extends Controller
 {
@@ -91,5 +94,20 @@ class FrontendController extends Controller
         $title = 'Tag: #'.$tag->tag;
 
         return view('frontend.post_list', compact('posts', 'title'));
+    }
+
+    public function handleContact(Request $request)
+    {
+        $validData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'message' => 'required|string|min:10',
+        ]);
+
+            Contact::create($validData);
+            Mail::to('sandeepadilakshana@gmail.com')->send(new ContactMail($validData));
+
+            return redirect()->route('home')->with('success', 'Your message has been sent successfully!');
+
     }
 }
