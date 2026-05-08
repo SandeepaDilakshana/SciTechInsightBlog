@@ -15,16 +15,17 @@ Route::get('/login', function () {
     return view('welcome');
 });
 
-Route::controller(FrontendController::class)->group(function(){
+Route::controller(FrontendController::class)->group(function () {
     Route::get('/', 'index')->name('home');
     Route::get('/contact', 'contact')->name('contact.show');
     Route::get('/about', 'about')->name('about.show');
     Route::get('/blog', 'blog')->name('blog.show');
-    Route::get('/blog/{slug}', 'blogDetails')->name('blog.details');
     Route::get('/categories', 'allCategories')->name('blog.categories');
     Route::get('/tags', 'allTags')->name('blog.tags');
     Route::get('/category/{id}', 'categoryPosts')->name('category.posts');
     Route::get('/tag/{id}', 'tagPosts')->name('tag.posts');
+    Route::post('/contactsubmit', 'handleContact')->name('contact.footer.submit');
+    Route::get('/blog/{slug}', 'blogDetails')->name('blog.details');
 });
 
 Route::get('/test', function () {
@@ -39,8 +40,8 @@ Route::middleware('auth')->group(function () {
 
     Route::controller(ProfileController::class)->group(function () {
         Route::get('/profile', 'index')->name('profile');
-        Route::get('/profile', 'edit')->name('profile.edit');
-        Route::delete('/profile', 'destroy')->name('profile.destroy');
+        Route::get('/profile/edit', 'edit')->name('profile.edit');
+        Route::delete('/profile/destroy', 'destroy')->name('profile.destroy');
         Route::post('/profile/update', 'update')->name('profile.update');
     });
 
