@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProfileController;
@@ -11,12 +12,21 @@ use App\Http\Controllers\UserController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/', function () {
-//     return view('frontend.home');
-// });
+Route::get('/login', function () {
+    return view('welcome');
+});
 
-Route::controller(FrontendController::class)->group(function(){
+Route::controller(FrontendController::class)->group(function () {
     Route::get('/', 'index')->name('home');
+    Route::get('/contact', 'contact')->name('contact.show');
+    Route::get('/about', 'about')->name('about.show');
+    Route::get('/blog', 'blog')->name('blog.show');
+    Route::get('/categories', 'allCategories')->name('blog.categories');
+    Route::get('/tags', 'allTags')->name('blog.tags');
+    Route::get('/category/{id}', 'categoryPosts')->name('category.posts');
+    Route::get('/tag/{id}', 'tagPosts')->name('tag.posts');
+    Route::post('/contactsubmit', 'handleContact')->name('contact.footer.submit');
+    Route::get('/blog/{slug}', 'blogDetails')->name('blog.details');
 });
 
 Route::get('/test', function () {
@@ -31,10 +41,17 @@ Route::middleware('auth')->group(function () {
 
     Route::controller(ProfileController::class)->group(function () {
         Route::get('/profile', 'index')->name('profile');
-        Route::get('/profile', 'edit')->name('profile.edit');
-        //Route::patch('/profile',  'update')->name('profile.update');
-        Route::delete('/profile', 'destroy')->name('profile.destroy');
+        Route::get('/profile/edit', 'edit')->name('profile.edit');
+        Route::delete('/profile/destroy', 'destroy')->name('profile.destroy');
         Route::post('/profile/update', 'update')->name('profile.update');
+    });
+
+    Route::controller(ContactController::class)->group(function () {
+        Route::get('/messages', 'showContacts')->name('messages');
+        Route::get('/messages/delete/{id}', 'deleteContacts')->name('messages.delete');
+        Route::get('/messages/trash', 'showTrashedContacts')->name('messages.trash');
+        Route::get('/messages/restore/{id}', 'restoreContact')->name('messages.restore');
+        Route::get('/messages/force-delete/{id}', 'permanentDeleteContact')->name('messages.force_delete');
     });
 
     Route::controller(PostsController::class)->prefix('admin/post')->group(function () {
@@ -51,7 +68,6 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::controller(CategoriesController::class)->prefix('admin/category')->group(function () {
-        // Route::get('/create', 'create')->name('category.create');
         Route::post('/store', 'store')->name('category.store');
         Route::get('/categories', 'index')->name('categories');
         Route::get('/edit/{id}', 'edit')->name('category.edit');
@@ -62,7 +78,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/restore/{id}', 'restore')->name('category.restore');
     });
 
-    Route::controller(TagsController::class)->prefix('tag')->group(function () {
+    Route::controller(TagsController::class)->prefix('admin/tag')->group(function () {
         Route::get('/tags', 'index')->name('tags');
         Route::post('/store', 'store')->name('tag.store');
         Route::get('/delete/{id}', 'destroy')->name('tag.delete');

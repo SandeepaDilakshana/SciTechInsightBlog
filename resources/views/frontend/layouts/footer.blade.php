@@ -3,36 +3,57 @@
         <div class="row">
             <div class="col-md-3 footer-item">
                 <h4>Blog Application</h4>
-                <p>Vivamus tellus mi. Nulla ne cursus elit,vulputate. Sed ne cursus augue hasellus lacinia sapien
-                    vitae.</p>
+                <p>Bringing you the best stories and latest news right at your fingertips. Explore, read, and grow with
+                    the Blog Application community.</p>
                 <ul class="social-icons">
-                    <li><a rel="nofollow" href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                    <li><a href="https://www.facebook.com/share/1AnrEiye4z/" target="_blank" rel="noopener noreferrer"><i
+                                class="fa fa-facebook"></i></a></li>
+                    <li><a href="https://x.com/SandeepaDila" target="_blank" rel="noopener noreferrer"><i
+                                class="fa fa-twitter"></i></a></li>
+                    <li><a href="https://www.linkedin.com/in/sandeepa-dilakshana-666b29283" target="_blank"
+                            rel="noopener noreferrer"><i class="fa fa-linkedin"></i></a></li>
                 </ul>
             </div>
             <div class="col-md-3 footer-item">
-                <h4>Useful Links</h4>
+                <h4>Other Links</h4>
                 <ul class="menu-list">
-                    <li><a href="#">Vivamus ut tellus mi</a></li>
-                    <li><a href="#">Nulla nec cursus elit</a></li>
-                    <li><a href="#">Vulputate sed nec</a></li>
-                    <li><a href="#">Cursus augue hasellus</a></li>
+                    <li><a href="{{ route('blog.categories') }}">Categories</a></li>
+                    <li><a href="{{ route('blog.tags') }}">Tags</a></li>
                 </ul>
             </div>
             <div class="col-md-3 footer-item">
                 <h4>Additional Pages</h4>
                 <ul class="menu-list">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="{{ route('home') }}">Home</a></li>
+                    <li><a href="{{ route('about.show') }}">About Us</a></li>
+                    <li><a href="{{ route('blog.show') }}">Blog</a></li>
+                    <li><a href="{{ route('contact.show') }}">Contact Us</a></li>
                 </ul>
             </div>
             <div class="col-md-3 footer-item last-item">
                 <h4>Contact Us</h4>
                 <div class="contact-form">
-                    <form id="contact footer-contact" action="" method="post">
+                    @if (session('success'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong>Success!</strong> {{ session('success') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif
+
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
+                    <form id="contact-footer-contact" action="{{ route('contact.footer.submit') }}" method="POST">
+                        @csrf
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12">
                                 <fieldset>
@@ -42,8 +63,8 @@
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12">
                                 <fieldset>
-                                    <input name="email" type="text" class="form-control" id="email"
-                                        pattern="[^ @]*@[^ @]*" placeholder="E-Mail Address" required="">
+                                    <input name="email" type="email" class="form-control" id="email"
+                                        placeholder="E-Mail Address" required="">
                                 </fieldset>
                             </div>
                             <div class="col-lg-12">
@@ -53,8 +74,7 @@
                             </div>
                             <div class="col-lg-12">
                                 <fieldset>
-                                    <button type="submit" id="form-submit" class="filled-button">Send
-                                        Message</button>
+                                    <button type="submit" id="form-submit" class="filled-button">Send Message</button>
                                 </fieldset>
                             </div>
                         </div>
