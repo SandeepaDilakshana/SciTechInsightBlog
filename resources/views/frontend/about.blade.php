@@ -33,7 +33,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="left-image">
-                                    <img src="{{ asset('frontend/assets/images/about-1-570x350.jpg') }}" alt="">
+                                    <img src="{{ asset('frontend/assets/images/about-1-570x350.jpg') }}" alt="about" loading="lazy">
                                 </div>
                             </div>
                         </div>
