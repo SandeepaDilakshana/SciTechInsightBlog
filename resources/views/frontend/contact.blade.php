@@ -99,6 +99,12 @@
                                 </div>
 
                                 <div class="col-lg-12">
+                                    <fieldset style="margin-bottom: 20px;">
+                                        <div class="cf-turnstile" data-sitekey="{{ env('TURNSTILE_SITE_KEY') }}"></div>
+                                    </fieldset>
+                                </div>
+
+                                <div class="col-lg-12">
                                     <fieldset>
                                         <button type="submit" id="form-submit" class="filled-button">Send Message</button>
                                     </fieldset>
@@ -113,11 +119,11 @@
 
     <div id="map">
         <!-- How to change your own map point
-                         1. Go to Google Maps
-                         2. Click on your location point
-                         3. Click "Share" and choose "Embed map" tab
-                         4. Copy only URL and paste it within the src="" field below
-                        -->
+                                 1. Go to Google Maps
+                                 2. Click on your location point
+                                 3. Click "Share" and choose "Embed map" tab
+                                 4. Copy only URL and paste it within the src="" field below
+                                -->
         <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2785.328207859713!2d81.05934311311196!3d6.997988938012665!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae4f7873408bf17%3A0x294e3cc667b5867d!2sServerClub.LK%20(Pvt)%20Ltd!5e1!3m2!1sen!2slk!4v1778045402327!5m2!1sen!2slk"
             width="100%" height="500px" frameborder="0" style="border:0;" allowfullscreen="" loading="lazy"
@@ -133,4 +139,6 @@
             });
         }
     </script>
+
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer nonce="GmunG9Dg4vvGaTAP1E1yfG"></script>
 @endsection
