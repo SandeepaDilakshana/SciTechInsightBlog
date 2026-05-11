@@ -21,7 +21,7 @@
                     <section class='tabs-content'>
                         @foreach ($posts as $post)
                             <article style="margin-bottom: 50px; border-bottom: 1px solid #eee; padding-bottom: 30px;">
-                                <img src="{{ $post->featured }}" alt="{{ $post->title }}"
+                                <img src="{{ $post->featured }}" alt="{{ $post->title }}" loading="lazy"
                                     style="width: 100%; height: 400px; object-fit: cover; border-radius: 5px;">
                                 <h4 style="margin-top: 20px;">
                                     <a href="{{ route('blog.details', $post->slug) }}">{{ $post->title }}</a>
