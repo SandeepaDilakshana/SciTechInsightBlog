@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProfileController;
@@ -43,6 +44,14 @@ Route::middleware('auth')->group(function () {
         Route::get('/profile/edit', 'edit')->name('profile.edit');
         Route::delete('/profile/destroy', 'destroy')->name('profile.destroy');
         Route::post('/profile/update', 'update')->name('profile.update');
+    });
+
+    Route::controller(ContactController::class)->group(function () {
+        Route::get('/messages', 'showContacts')->name('messages');
+        Route::get('/messages/delete/{id}', 'deleteContacts')->name('messages.delete');
+        Route::get('/messages/trash', 'showTrashedContacts')->name('messages.trash');
+        Route::get('/messages/restore/{id}', 'restoreContact')->name('messages.restore');
+        Route::get('/messages/force-delete/{id}', 'permanentDeleteContact')->name('messages.force_delete');
     });
 
     Route::controller(PostsController::class)->prefix('admin/post')->group(function () {
