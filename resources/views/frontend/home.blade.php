@@ -73,21 +73,21 @@
                 <div class="col-md-8">
                     <section class='tabs-content'>
                         <article id='tabs-1'>
-                            <img src="{{ $first_post->featured }}" alt="{{ $first_post->title }}"
+                            <img src="{{ $first_post->featured }}" alt="{{ $first_post->title }}" loading="lazy"
                                 style="width: 100%; height: 400px; object-fit: cover; border-radius: 5px;">
                             <h4>{{ $first_post->title }}</h4>
                             <small><i class="fa fa-user"></i>&nbsp;&nbsp;{{ $first_post->user->name }}</small>
                             <p>{!! Str::limit($first_post->content, 200) !!}</p>
                         </article>
                         <article id='tabs-2'>
-                            <img src="{{ $second_post->featured }}" alt="{{ $second_post->title }}"
+                            <img src="{{ $second_post->featured }}" alt="{{ $second_post->title }}" loading="lazy"
                                 style="width: 100%; height: 400px; object-fit: cover; border-radius: 5px;">
                             <h4>{{ $second_post->title }}</h4>
                             <small><i class="fa fa-user"></i>&nbsp;&nbsp;{{ $second_post->user->name }}</small>
                             <p>{!! Str::limit($second_post->content, 200) !!}</p>
                         </article>
                         <article id='tabs-3'>
-                            <img src="{{ $third_post->featured }}" alt="{{ $third_post->title }}"
+                            <img src="{{ $third_post->featured }}" alt="{{ $third_post->title }}" loading="lazy"
                                 style="width: 100%; height: 400px; object-fit: cover; border-radius: 5px;">
                             <h4>{{ $third_post->title }}</h4>
                             <small><i class="fa fa-user"></i>&nbsp;&nbsp;{{ $third_post->user->name }}</small>
@@ -109,7 +109,7 @@
                     <div class="col-md-6">
                         <div class="left-image">
                             <img src="{{ asset('frontend/assets/images/about-1-570x350.jpg') }}" class="img-fluid"
-                                alt="">
+                                alt="about" loading="lazy">
                         </div>
                     </div>
                     <div class="col-md-6 align-self-center">
