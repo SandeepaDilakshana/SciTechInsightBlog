@@ -107,7 +107,7 @@ class FrontendController extends Controller
             Contact::create($validData);
             Mail::to('sandeepadilakshana@gmail.com')->send(new ContactMail($validData));
 
-            return redirect()->route('home')->with('success', 'Your message has been sent successfully!');
+            return redirect()->back()->with('success', 'Your message has been sent successfully!');
 
     }
 }
