@@ -10,6 +10,7 @@ use App\Models\Setting;
 use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 
 class FrontendController extends Controller
@@ -102,12 +103,33 @@ class FrontendController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
             'message' => 'required|string|min:10',
+            'cf-turnstile-response' => 'required',
         ]);
 
-            Contact::create($validData);
-            Mail::to('sandeepadilakshana@gmail.com')->send(new ContactMail($validData));
+        $response = Http::asForm()->post('https://challenges.cloudflare.com/turnstile/v0/siteverify', [
+            'secret' => env('TURNSTILE_SECRET_KEY'),
+            'response' => $request->input('cf-turnstile-response'),
+            'remoteip' => $request->ip(),
+        ]);
 
-            return redirect()->back()->with('success', 'Your message has been sent successfully!');
+        $outcome = $response->json();
+
+        if (! $outcome['success']) {
+            return redirect()->back()
+                ->withInput()
+                ->withErrors(['captcha' => 'Captcha Verification Failed. Please try again.']);
+        }
+
+        $contactData = [
+            'name' => $validData['name'],
+            'email' => $validData['email'],
+            'message' => $validData['message'],
+        ];
+
+        Contact::create($contactData);
+        Mail::to('sandeepadilakshana@gmail.com')->send(new ContactMail($contactData));
+
+        return redirect()->back()->with('success', 'Your message has been sent successfully!');
 
     }
 }
