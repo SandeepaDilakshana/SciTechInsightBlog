@@ -23,10 +23,6 @@
                         <a class="nav-link" href="{{ route('blog.categories') }}">Categories</a>
                     </li>
 
-                    <li class="nav-item {{ Route::is('blog.tags') ? 'active' : '' }}">
-                        <a class="nav-link" href="{{ route('blog.tags') }}">Tags</a>
-                    </li>
-
                     <li class="nav-item {{ Route::is('about.show') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('about.show') }}">About Us</a>
                     </li>

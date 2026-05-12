@@ -21,7 +21,7 @@
             <div class="more-info-content">
                 <div class="right-content">
                     <div>
-                        <img src="{{ asset($post->featured) }}" class="img-fluid" alt="{{ $post->title }}"
+                        <img src="{{ asset($post->featured) }}" class="img-fluid" alt="{{ $post->title }}" loading="lazy"
                             style="width:
                             100%; height: 500px; object-fit: cover; border-radius: 5px;">
                     </div>
@@ -73,7 +73,7 @@
         <div class="row align-items-center">
             <div class="text-center col-md-3">
                 <img src="{{ $post->user->profile ? asset($post->user->profile->avatar) : asset('assets/images/default-avatar.png') }}"
-                    alt="{{ $post->user->name }}"
+                    alt="{{ $post->user->name }}" loading="lazy"
                     style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
             </div>
 

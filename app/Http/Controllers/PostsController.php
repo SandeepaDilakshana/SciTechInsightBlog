@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
@@ -60,6 +61,7 @@ class PostsController extends Controller
         $post->featured = 'uploads/posts/'.$featured_new_name;
         $post->content = $request->content;
         $post->category_id = $request->category_id;
+        $post->user_id = Auth::id();
         $post->save();
 
         $post->tags()->attach($request->tags);  // attach() available with pivot tables in laravel
