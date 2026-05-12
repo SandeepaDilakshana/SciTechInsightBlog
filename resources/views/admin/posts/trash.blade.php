@@ -30,21 +30,31 @@
                 <tbody class="bg-white divide-y divide-gray-200">
                     @forelse ($posts as $post)
                         <tr class="transition-colors hover:bg-gray-50">
-                            <td class="px-6 py-4 text-sm text-gray-900 whitespace-nowrap"><img src="{{ $post->featured }}"
-                                    alt="{{ $post->title }}" width="70px" height="70px"</td>
+                            <td class="px-6 py-4 text-sm text-gray-900 whitespace-nowrap">
+                                <img src="{{ $post->featured }}" alt="{{ $post->title }}" width="70px" height="70px">
+                            </td>
                             <td class="px-6 py-4 text-sm text-gray-900 whitespace-nowrap">{{ $post->title }}</td>
                             <td class="px-6 py-4 text-center whitespace-nowrap">
-                                <a href="{{ route('post.restore', ['id' => $post->id]) }}"
-                                    class="inline-flex items-center px-3 py-1 text-xs font-medium text-white transition-colors bg-blue-500 rounded hover:bg-blue-600">
-                                    Restore
-                                </a>
+                                @if (Auth::id() == $post->user_id || Auth::user()->admin)
+                                    <a href="{{ route('post.restore', ['id' => $post->id]) }}"
+                                        class="inline-flex items-center px-3 py-1 text-xs font-medium text-white transition-colors bg-blue-500 rounded hover:bg-blue-600">
+                                        Restore
+                                    </a>
+                                @else
+                                    <span class="text-xs text-gray-400">Locked</span>
+                                @endif
                             </td>
+
                             <td class="px-6 py-4 text-center whitespace-nowrap">
-                                <a href="{{ route('post.trash', ['id' => $post->id]) }}"
-                                    class="inline-flex items-center px-3 py-1 text-xs font-medium text-white transition-colors bg-red-500 rounded hover:bg-red-600"
-                                    onclick="confirmDelete(event, this.href)">
-                                    Delete Permenantly
-                                </a>
+                                @if (Auth::id() == $post->user_id || Auth::user()->admin)
+                                    <a href="{{ route('post.trash', ['id' => $post->id]) }}"
+                                        class="inline-flex items-center px-3 py-1 text-xs font-medium text-white transition-colors bg-red-500 rounded hover:bg-red-600"
+                                        onclick="confirmDelete(event, this.href)">
+                                        Delete Permanently
+                                    </a>
+                                @else
+                                    <span class="text-xs text-gray-400">Locked</span>
+                                @endif
                             </td>
                         </tr>
                     @empty
