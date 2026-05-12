@@ -92,6 +92,12 @@
                             </a>
                         </li>
                         <li>
+                            <a href="{{ route('env_view') }}"
+                                class="flex items-center px-6 py-4 hover:bg-slate-800 transition {{ request()->routeIs('env_view') ? 'bg-blue-600 border-r-4' : '' }}">
+                                <span class="mr-3"></span> Update env
+                            </a>
+                        </li>
+                        <li>
                             <a href="{{ route('messages') }}"
                                 class="flex items-center px-6 py-4 hover:bg-slate-800 transition {{ request()->routeIs('messages') ? 'bg-blue-600 border-r-4' : '' }}">
                                 <span class="mr-3"></span> Messages
