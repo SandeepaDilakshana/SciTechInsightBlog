@@ -32,9 +32,9 @@
         <input type="checkbox" id="sidebar-toggle" class="hidden peer" />
 
         <aside
-            class="fixed inset-y-0 left-0 z-40 w-64 text-white transition-transform duration-300 ease-in-out transform -translate-x-full shadow-2xl bg-slate-900 peer-checked:translate-x-0 lg:static lg:inset-0 lg:translate-x-0">
+            class="fixed inset-y-0 left-0 z-50 w-64 overflow-y-auto text-white transition-transform duration-300 ease-in-out transform -translate-x-full shadow-2xl bg-slate-900 peer-checked:translate-x-0 lg:static lg:inset-0 lg:translate-x-0">
 
-            <div class="flex items-center justify-between h-20 px-6 bg-slate-800 lg:bg-transparent">
+            <div class="sticky top-0 z-10 flex items-center justify-between h-20 px-6 bg-slate-800 lg:bg-slate-900">
                 <span class="text-2xl font-bold tracking-wider text-blue-400">BLOG APP</span>
                 <label for="sidebar-toggle" class="cursor-pointer lg:hidden">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -110,18 +110,19 @@
 
         <div class="flex flex-col flex-1 min-w-0">
 
-            <header class="flex items-center justify-between h-16 px-6 bg-white border-b shadow-sm">
+            <header
+                class="sticky top-0 z-40 flex items-center justify-between h-16 px-4 bg-white border-b shadow-sm sm:px-6">
                 <div class="flex items-center">
                     <label for="sidebar-toggle"
-                        class="mr-4 text-gray-600 transition cursor-pointer lg:hidden hover:text-blue-600">
-                        <svg class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        class="p-2 mr-2 text-gray-600 transition rounded-md cursor-pointer lg:hidden hover:bg-gray-100 hover:text-blue-600">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg>
                     </label>
 
                     @isset($header)
-                        <h1 class="text-xl font-bold text-gray-800">{{ $header }}</h1>
+                        <h1 class="text-lg font-bold text-gray-800 truncate sm:text-xl">{{ $header }}</h1>
                     @endisset
                 </div>
 
