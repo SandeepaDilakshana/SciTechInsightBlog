@@ -22,6 +22,8 @@ class UsersTableSeeder extends Seeder
             'admin' => 1
         ]);
 
+        $user->assignRole('admin');
+
         Profile::create([
             'user_id' => $user->id,
             'avatar' => 'uploads/avatars/836.jpg',

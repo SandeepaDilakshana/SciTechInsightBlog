@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class CategoriesController extends Controller
 {
@@ -59,7 +60,8 @@ class CategoriesController extends Controller
     public function edit(string $id)
     {
         $category = Category::find($id);
-        
+
+        Gate::authorize('update', $category);
 
         return view('admin.categories.edit')->with('category', $category);
     }
@@ -74,6 +76,8 @@ class CategoriesController extends Controller
         ]);
 
         $category = Category::findOrFail($id);
+
+        Gate::authorize('update', $category);
 
         $category->name = $request->name;
         $category->save();
@@ -92,6 +96,8 @@ class CategoriesController extends Controller
     public function destroy(string $id)
     {
         $category = Category::findOrFail($id);
+
+        Gate::authorize('delete', $category);
 
         $category->posts()->delete();
         $category->delete();

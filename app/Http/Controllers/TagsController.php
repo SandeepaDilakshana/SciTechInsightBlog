@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class TagsController extends Controller
 {
@@ -71,6 +72,9 @@ class TagsController extends Controller
         ]);
 
         $tag = Tag::findOrFail($id);
+
+        Gate::authorize('update', $tag);
+
         $tag->tag = $request->tag;
         $tag->save();
 
@@ -88,6 +92,8 @@ class TagsController extends Controller
     public function destroy(string $id)
     {
         $tag = Tag::findOrFail($id);
+
+        Gate::authorize('delete', $tag);
         $tag->delete();
 
         $notification = [

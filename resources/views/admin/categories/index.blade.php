@@ -14,10 +14,12 @@
                     class="inline-flex items-center px-3 py-1 text-xs font-medium text-white transition-colors bg-blue-500 rounded hover:bg-blue-600">
                     Add a new category
                 </button>
-                <a href="{{ route('category.trashbin') }}"
-                    class="inline-flex items-center px-3 py-1 text-xs font-medium text-white transition-colors bg-red-500 rounded hover:bg-red-600">
-                    Trash
-                </a>
+                @can('delete')
+                    <a href="{{ route('category.trashbin') }}"
+                        class="inline-flex items-center px-3 py-1 text-xs font-medium text-white transition-colors bg-red-500 rounded hover:bg-red-600">
+                        Trash
+                    </a>
+                @endcan
             </div>
         </div>
         <div class="overflow-x-auto">
@@ -42,17 +44,26 @@
                                 {{ $category->name }}
                             </td>
                             <td class="px-6 py-4 text-center whitespace-nowrap">
-                                <button type="button" onclick="toggleModal('editCategoryModal-{{ $category->id }}')"
-                                    class="inline-flex items-center px-3 py-1 text-xs font-medium text-white transition-colors bg-blue-500 rounded hover:bg-blue-600">
-                                    Edit
-                                </button>
+                                @can('update', $category)
+                                    <button type="button" onclick="toggleModal('editCategoryModal-{{ $category->id }}')"
+                                        class="inline-flex items-center px-3 py-1 text-xs font-medium text-white transition-colors bg-blue-500 rounded hover:bg-blue-600">
+                                        Edit
+                                    </button>
+                                @else
+                                    <span class="text-xs italic text-gray-400">Restricted</span>
+                                @endcan
                             </td>
                             <td class="px-6 py-4 text-center whitespace-nowrap">
-                                <a href="{{ route('category.delete', ['id' => $category->id]) }}"
-                                    class="inline-flex items-center px-3 py-1 text-xs font-medium text-white transition-colors bg-red-500 rounded hover:bg-red-600"
-                                    onclick="confirmDelete(event, this.href)">
-                                    Move to Trash
-                                </a>
+                                @can('delete', $category)
+                                    <a href="{{ route('category.delete', ['id' => $category->id]) }}"
+                                        class="inline-flex items-center px-3 py-1 text-xs font-medium text-white transition-colors bg-red-500 rounded hover:bg-red-600"
+                                        onclick="confirmDelete(event, this.href)">
+                                        Move to Trash
+                                    </a>
+                                @else
+                                    <span class="text-xs italic text-gray-400">Restricted</span>
+                                @endcan
+
                             </td>
                         </tr>
 
