@@ -17,7 +17,16 @@ class PostsController extends Controller
      */
     public function index()
     {
-        return view('admin.posts.index')->with('posts', Post::paginate(10));
+        $user = Auth::user();
+
+        if ($user->hasRole('admin')){
+            $posts = Post::paginate(10);
+        }
+        else{
+            $posts = Post::where('user_id', $user->id)->paginate(10);
+        }
+
+        return view('admin.posts.index',compact('posts'));
     }
 
     /**
@@ -91,7 +100,6 @@ class PostsController extends Controller
     {
         $post = Post::findOrFail($id);
 
-        $this->authorize('update', $post);
         $categories = Category::all();
         $tags = Tag::all();
 
