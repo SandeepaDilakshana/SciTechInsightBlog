@@ -4,7 +4,6 @@ namespace App\Policies;
 
 use App\Models\Post;
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
 
 class PostPolicy
 {
@@ -37,10 +36,6 @@ class PostPolicy
      */
     public function update(User $user, Post $post): bool
     {
-        if ($user->hasRole('admin')){
-            return true;
-        }
-
         return $user->id === $post->user_id && $user->can('edit own posts');
     }
 
@@ -49,10 +44,6 @@ class PostPolicy
      */
     public function delete(User $user, Post $post): bool
     {
-        if ($user->hasRole('admin')){
-            return true;
-        }
-
         return $user->id === $post->user_id && $user->can('delete own posts');
     }
 
