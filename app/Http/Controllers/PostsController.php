@@ -7,9 +7,11 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class PostsController extends Controller
 {
+    use AuthorizesRequests;
     /**
      * Display a listing of the resource.
      */
@@ -88,6 +90,8 @@ class PostsController extends Controller
     public function edit(string $id)
     {
         $post = Post::findOrFail($id);
+
+        $this->authorize('update', $post);
         $categories = Category::all();
         $tags = Tag::all();
 
