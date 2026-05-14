@@ -72,7 +72,7 @@
                             <span class="mr-3"></span> All Tags
                         </a>
                     </li>
-                    @if (Auth::user()->admin)
+                    @role('admin')
                         <li>
                             <a href="{{ route('users') }}"
                                 class="flex items-center px-6 py-4 hover:bg-slate-800 transition {{ request()->routeIs('users') ? 'bg-blue-600 border-r-4' : '' }}">
@@ -103,7 +103,7 @@
                                 <span class="mr-3"></span> Messages
                             </a>
                         </li>
-                    @endif
+                    @endrole
                     <li>
                         <a href="{{ route('post.create') }}"
                             class="flex items-center px-6 py-4 hover:bg-slate-800 transition {{ request()->routeIs('post.create') ? 'bg-blue-600 border-r-4' : '' }}">
