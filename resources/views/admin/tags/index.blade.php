@@ -37,17 +37,25 @@
                                 {{ $tag->tag }}
                             </td>
                             <td class="px-6 py-4 text-center whitespace-nowrap">
-                                <button type="button" onclick="toggleModal('editTagModal-{{ $tag->id }}')"
-                                    class="inline-flex items-center px-3 py-1 text-xs font-medium text-white transition-colors bg-blue-500 rounded hover:bg-blue-600">
-                                    Edit
-                                    </a>
+                                @can('update', $tag)
+                                    <button type="button" onclick="toggleModal('editTagModal-{{ $tag->id }}')"
+                                        class="inline-flex items-center px-3 py-1 text-xs font-medium text-white transition-colors bg-blue-500 rounded hover:bg-blue-600">
+                                        Edit
+                                        </a>
+                                    @else
+                                        <span class="text-xs italic text-gray-400">Restricted</span>
+                                    @endcan
                             </td>
                             <td class="px-6 py-4 text-center whitespace-nowrap">
-                                <a href="{{ route('tag.delete', ['id' => $tag->id]) }}"
-                                    class="inline-flex items-center px-3 py-1 text-xs font-medium text-white transition-colors bg-red-500 rounded hover:bg-red-600"
-                                    onclick="confirmDelete(event, this.href)">
-                                    Delete
-                                </a>
+                                @can('delete', $tag)
+                                    <a href="{{ route('tag.delete', ['id' => $tag->id]) }}"
+                                        class="inline-flex items-center px-3 py-1 text-xs font-medium text-white transition-colors bg-red-500 rounded hover:bg-red-600"
+                                        onclick="confirmDelete(event, this.href)">
+                                        Delete
+                                    </a>
+                                @else
+                                    <span class="text-xs italic text-gray-400">Restricted</span>
+                                @endcan
                             </td>
                         </tr>
 
