@@ -41,20 +41,20 @@
                             <td class="px-6 py-4 text-sm text-gray-900 whitespace-nowrap">{{ $post->title }}</td>
 
                             <td class="px-6 py-4 text-center whitespace-nowrap">
-                                {{-- පෝස්ට් එක අයිති කෙනාට හෝ ඇඩ්මින්ට පමණක් Edit පෙන්වන්න --}}
-                                @if (Auth::id() == $post->user_id || Auth::user()->admin)
+
+                                @can('update', $post)
                                     <a href="{{ route('post.edit', ['id' => $post->id]) }}"
                                         class="inline-flex items-center px-3 py-1 text-xs font-medium text-white transition-colors bg-blue-500 rounded hover:bg-blue-600">
                                         Edit
                                     </a>
                                 @else
                                     <span class="text-xs italic text-gray-400">No Access</span>
-                                @endif
+                                @endcan
                             </td>
 
                             <td class="px-6 py-4 text-center whitespace-nowrap">
 
-                                @if (Auth::id() == $post->user_id || Auth::user()->admin)
+                                @can('delete', $post)
                                     <a href="{{ route('post.delete', ['id' => $post->id]) }}"
                                         class="inline-flex items-center px-3 py-1 text-xs font-medium text-white transition-colors bg-red-500 rounded hover:bg-red-600"
                                         onclick="confirmDelete(event, this.href)">
@@ -62,7 +62,7 @@
                                     </a>
                                 @else
                                     <span class="text-xs italic text-gray-400">No Access</span>
-                                @endif
+                                @endcan
                             </td>
                         </tr>
                     @empty
