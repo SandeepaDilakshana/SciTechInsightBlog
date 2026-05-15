@@ -35,7 +35,7 @@
 
                                     <td class="text-center">
                                         @can('update', $tag)
-                                            <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
+                                            <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal"
                                                 data-bs-target="#editTagModal-{{ $tag->id }}">
                                                 <i class="bx bx-edit"></i> Edit
                                             </button>
@@ -47,7 +47,7 @@
                                     <td class="text-center">
                                         @can('delete', $tag)
                                             <a href="{{ route('tag.delete', ['id' => $tag->id]) }}"
-                                                class="btn btn-sm btn-danger" onclick="confirmDelete(event, this.href)">
+                                                class="btn btn-sm btn-outline-danger" onclick="confirmDelete(event, this.href)">
                                                 <i class="bx bx-trash"></i> Delete
                                             </a>
                                         @else
