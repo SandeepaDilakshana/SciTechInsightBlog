@@ -9,7 +9,7 @@ class EnvSettingsController extends Controller
 {
     public function index()
     {
-        return view('admin.settings.updateEnv');
+        return view('admin_panel.settings.updateEnv');
     }
 
     public function updateEnv(Request $request)
@@ -50,7 +50,7 @@ class EnvSettingsController extends Controller
 
             file_put_contents($envPath, $envContent);
 
-            Artisan::call('config:clear');
+            // Artisan::call('config:clear');
 
             $notification = [
             'message' => 'Email configuration updated Successfully !',
