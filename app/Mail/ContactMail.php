@@ -40,7 +40,7 @@ class ContactMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.contact', // resources/views/emails/contact.blade.php
+            view: 'admin_panel.emails.contact', // resources/views/emails/contact.blade.php
             with: [
                 'name' => $this->formData['name'],
                 'email' => $this->formData['email'],
