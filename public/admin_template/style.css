@@ -5,7 +5,7 @@ Template Name: Laxom- Bootstrap Admin Template
 Author: Theme-life
 Version: v1.0.0
 
-[Table of Contents]  
+[Table of Contents]
     * CSS Tables
         + Reboot CSS
         + Prelaoder Css
@@ -3723,8 +3723,8 @@ tr {
 .progress-report p {
   margin-bottom: 0;
   font-size: 13px;
-  color: #ef5777;
-  background-color: rgba(239, 87, 120, 0.10);
+  color: #000000;
+  background-color: rgb(243, 240, 240);
   padding: 5px 12px;
   display: inline-block;
   border-radius: 30px;
