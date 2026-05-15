@@ -26,7 +26,7 @@ class UserController extends Controller implements HasMiddleware
      */
     public function index()
     {
-        return view('admin.users.index')->with('users', User::paginate(10));
+        return view('admin_panel.users.index')->with('users', User::paginate(10));
     }
 
     /**
@@ -34,7 +34,7 @@ class UserController extends Controller implements HasMiddleware
      */
     public function create()
     {
-        return view('admin.users.create');
+        return view('admin_panel.users.create');
     }
 
     /**
@@ -139,7 +139,7 @@ class UserController extends Controller implements HasMiddleware
     {
         $users = User::onlyTrashed()->latest()->paginate(10);
 
-        return view('admin.users.trash', compact('users'));
+        return view('admin_panel.users.trash', compact('users'));
     }
 
     public function deleteforever($id)
