@@ -130,7 +130,7 @@
                                         <thead>
                                             <tr>
                                                 <th>Post</th>
-                                                <th>Stutas</th>
+                                                <th>Status</th>
                                             </tr>
                                         </thead>
                                         <tbody>
