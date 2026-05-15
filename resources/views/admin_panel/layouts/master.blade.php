@@ -18,6 +18,10 @@
     <!-- Master Stylesheet [If you remove this CSS file, your file will be broken undoubtedly.] -->
     <link rel="stylesheet" href="{{ asset('admin_template/style.css') }}">
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
 </head>
 
 <body>
@@ -62,15 +66,7 @@
 
             <div class="main-content introduction-farm">
                 <!-- Main Content Area -->
-                <div class="content-wraper-area">
-                    <div class="dashboard-area">
-                        <div class="container-fluid">
-                            <div class="row g-4">
-                                @yield('content')
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @yield('content')
                 <!-- Main Content Area -->
 
                 <!-- Footer Area -->
