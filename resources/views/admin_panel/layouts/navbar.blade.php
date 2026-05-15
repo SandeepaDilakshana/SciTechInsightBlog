@@ -21,7 +21,7 @@
                     </li>
                     <li><a href="{{ route('tags') }}"><i class='bx bx-tag'></i><span>Tags</span></a>
                     </li>
-                    <li><a href="#"><i class='bx bx-plus-circle'></i><span>Add Post</span></a>
+                    <li><a href="{{ route('post.create') }}"><i class='bx bx-plus-circle'></i><span>Add Post</span></a>
                     </li>
                     @role('admin')
                     <li><a href="{{ route('users') }}"><i class='bx bx-user-circle'></i><span>Users</span></a>
