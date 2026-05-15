@@ -58,7 +58,7 @@ class DashboardController extends Controller
         $chartLabels = $postStats->pluck('month')->toArray();
         $chartData = $postStats->pluck('data')->toArray();
 
-        return view('dashboard', compact(
+        return view('admin_panel.layouts.master', compact(
             'posts_count',
             'categories_count',
             'tags_count',
