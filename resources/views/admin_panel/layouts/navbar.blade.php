@@ -13,26 +13,28 @@
             <!-- Sidebar Menu -->
             <nav>
                 <ul class="sidebar-menu" data-widget="tree">
-                    <li><a href="#"><i class='bx bx-home-heart'></i><span>Dashboard</span></a>
+                    <li><a href="{{ route('dashboard') }}"><i class='bx bx-home-heart'></i><span>Dashboard</span></a>
                     </li>
-                    <li><a href="#"><i class='bx bx-collection'></i><span>Categories</span></a>
+                    <li><a href="{{ route('categories') }}"><i class='bx bx-collection'></i><span>Categories</span></a>
                     </li>
-                    <li><a href="#"><i class='bx bx-news'></i><span>Posts</span></a>
+                    <li><a href="{{ route('posts') }}"><i class='bx bx-news'></i><span>Posts</span></a>
                     </li>
-                    <li><a href="#"><i class='bx bx-tag'></i><span>Tags</span></a>
-                    </li>
-                    <li><a href="#"><i class='bx bx-user-circle'></i><span>Users</span></a>
-                    </li>
-                    <li><a href="#"><i class='bx bx-user-plus'></i><span>Create New User</span></a>
+                    <li><a href="{{ route('tags') }}"><i class='bx bx-tag'></i><span>Tags</span></a>
                     </li>
                     <li><a href="#"><i class='bx bx-plus-circle'></i><span>Add Post</span></a>
                     </li>
-                    <li><a href="#"><i class='bx bx-envelope'></i><span>Messages</span></a>
+                    @role('admin')
+                    <li><a href="{{ route('users') }}"><i class='bx bx-user-circle'></i><span>Users</span></a>
                     </li>
-                    <li><a href="#"><i class='bx bx-list-ul'></i><span>Update env</span></a>
+                    <li><a href="{{ route('user.create') }}"><i class='bx bx-user-plus'></i><span>Create New User</span></a>
                     </li>
-                    <li><a href="#"><i class='bx bx-cog'></i><span>Settings</span></a>
+                    <li><a href="{{ route('messages') }}"><i class='bx bx-envelope'></i><span>Messages</span></a>
                     </li>
+                    <li><a href="{{ route('env_view') }}"><i class='bx bx-list-ul'></i><span>Update env</span></a>
+                    </li>
+                    <li><a href="{{ route('settings') }}"><i class='bx bx-cog'></i><span>Settings</span></a>
+                    </li>
+                    @endrole
                 </ul>
             </nav>
         </div>
