@@ -41,14 +41,14 @@
 
                                     <td class="text-center align-middle">
                                         <a href="{{ route('user.restore', ['id' => $user->id]) }}"
-                                            class="text-white btn btn-sm btn-info">
+                                            class="text-white btn btn-sm btn-outline-info">
                                             <i class="bx bx-undo"></i> Restore
                                         </a>
                                     </td>
 
                                     <td class="text-center align-middle">
                                         <a href="{{ route('user.trash', ['id' => $user->id]) }}"
-                                            class="btn btn-sm btn-danger" onclick="confirmDelete(event, this.href)">
+                                            class="btn btn-sm btn-outline-danger" onclick="confirmDelete(event, this.href)">
                                             <i class="bx bx-trash"></i> Delete Permanently
                                         </a>
                                     </td>
