@@ -20,8 +20,8 @@
 
                     @include('includes.errors')
 
-                    <form action="{{ route('post.update', ['id' => $post->id]) }}" method="POST" enctype="multipart/form-data"
-                        id="postForm">
+                    <form action="{{ route('post.update', ['id' => $post->id]) }}" method="POST"
+                        enctype="multipart/form-data" id="postForm">
                         @csrf
 
                         <div class="mb-4 row">
@@ -77,14 +77,16 @@
                                     </div>
                                 @endif
                                 <input type="file" name="featured" class="form-control" id="featured">
-                                <small class="text-xs italic text-muted">Leave blank if you don't want to change the image.</small>
+                                <small class="text-xs italic text-muted">Leave blank if you don't want to change the
+                                    image.</small>
                             </div>
                         </div>
 
                         <div class="mb-4 row">
-                            <label class="col-sm-3 col-form-label">Content</label>
+                            <label class="text-white col-sm-3 col-form-label">Content</label>
                             <div class="col-sm-9">
-                                <div id="editor" style="height: 300px; background: #fff;">{!! $post->content !!}</div>
+                                <div id="editor" style="height: 300px; border: 1px solid #ced4da;">
+                                    {!! $post->content !!}</div>
                                 <input type="hidden" name="content" id="content-hidden">
                             </div>
                         </div>
@@ -102,7 +104,8 @@
                 </div>
             </div>
         </div>
-    </div> <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
+    </div>
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
 
     <script>
@@ -117,4 +120,27 @@
             contentInput.value = quill.root.innerHTML;
         };
     </script>
+
+    <style>
+        #editor .ql-editor {
+            color: white !important;
+            background-color: transparent !important;
+        }
+
+        #editor .ql-editor.ql-blank::before {
+            color: rgba(255, 255, 255, 0.6) !important;
+        }
+
+        .ql-snow .ql-stroke {
+            stroke: white !important;
+        }
+
+        .ql-snow .ql-fill {
+            fill: white !important;
+        }
+
+        .ql-snow .ql-picker {
+            color: white !important;
+        }
+    </style>
 @endsection
