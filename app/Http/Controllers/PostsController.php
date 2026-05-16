@@ -26,7 +26,7 @@ class PostsController extends Controller
             $posts = Post::where('user_id', $user->id)->paginate(10);
         }
 
-        return view('admin.posts.index',compact('posts'));
+        return view('admin_panel.posts.index',compact('posts'));
     }
 
     /**
@@ -46,7 +46,7 @@ class PostsController extends Controller
         return redirect()->back()->with($notification);
         }
 
-        return view('admin.posts.create', compact('categories', 'tags'));
+        return view('admin_panel.posts.create', compact('categories', 'tags'));
     }
 
     /**
@@ -103,7 +103,7 @@ class PostsController extends Controller
         $categories = Category::all();
         $tags = Tag::all();
 
-        return view('admin.posts.edit', compact('post', 'categories', 'tags'));
+        return view('admin_panel.posts.edit', compact('post', 'categories', 'tags'));
     }
 
     /**
@@ -161,7 +161,7 @@ class PostsController extends Controller
     {
         $posts = Post::onlyTrashed()->latest()->paginate(10);
 
-        return view('admin.posts.trash', compact('posts'));
+        return view('admin_panel.posts.trash', compact('posts'));
     }
 
     public function deleteforever($id)

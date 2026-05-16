@@ -13,7 +13,7 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        return view('admin.categories.index')->with('categories',Category::paginate(10));
+        return view('admin_panel.categories.index')->with('categories',Category::paginate(10));
     }
 
     /**
@@ -113,7 +113,7 @@ class CategoriesController extends Controller
     public function categorytrash()
     {
         $categories = Category::onlyTrashed()->latest()->paginate(10);
-        return view('admin.categories.trash', compact('categories'));
+        return view('admin_panel.categories.trash', compact('categories'));
     }
 
 

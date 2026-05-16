@@ -13,7 +13,7 @@ class ContactController extends Controller
     {
         $messages = Contact::latest()->paginate(10);
 
-        return view('emails.index', compact('messages'));
+        return view('admin_panel.emails.index', compact('messages'));
     }
 
     public function deleteContacts($id)
@@ -32,7 +32,7 @@ class ContactController extends Controller
     {
         $trashedMessages = Contact::onlyTrashed()->latest()->paginate(10);
 
-        return view('emails.trash', compact('trashedMessages'));
+        return view('admin_panel.emails.trash', compact('trashedMessages'));
     }
 
     public function restoreContact($id)

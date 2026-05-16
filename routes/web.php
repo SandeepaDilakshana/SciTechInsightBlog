@@ -31,10 +31,6 @@ Route::controller(FrontendController::class)->group(function () {
     Route::get('/blog/{slug}', 'blogDetails')->name('blog.details');
 });
 
-Route::get('/test', function () {
-    return User::find(1)->profile;
-});
-
 Route::get('dashboard',[DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 

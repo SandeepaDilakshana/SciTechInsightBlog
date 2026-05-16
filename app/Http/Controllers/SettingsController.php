@@ -18,7 +18,7 @@ class SettingsController extends Controller implements HasMiddleware
 
     public function index()
     {
-        return view('admin.settings.settings')->with('settings', Setting::first());
+        return view('admin_panel.settings.settings')->with('settings', Setting::first());
     }
 
     public function update(Request $request): RedirectResponse
