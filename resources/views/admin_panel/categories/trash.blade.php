@@ -33,14 +33,14 @@
 
                                     <td class="text-center">
                                         <a href="{{ route('category.restore', ['id' => $category->id]) }}"
-                                            class="text-white btn btn-sm btn-info">
+                                            class="text-white btn btn-sm btn-outline-info">
                                             <i class="bx bx-undo"></i> Restore
                                         </a>
                                     </td>
 
                                     <td class="text-center">
                                         <a href="{{ route('category.trash', ['id' => $category->id]) }}"
-                                            class="btn btn-sm btn-danger" onclick="confirmDelete(event, this.href)">
+                                            class="btn btn-sm btn-outline-danger" onclick="confirmDelete(event, this.href)">
                                             <i class="bx bx-trash"></i> Delete Permanently
                                         </a>
                                     </td>
