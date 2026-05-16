@@ -25,7 +25,7 @@
                             <tr>
                                 <th class="fw-bold">IMAGE</th>
                                 <th class="fw-bold">NAME</th>
-                                <th class="fw-bold">PERMISSIONS</th>
+                                <th class="text-center fw-bold">PERMISSIONS</th>
                                 <th class="text-center fw-bold">ACTION</th>
                             </tr>
                         </thead>
@@ -40,15 +40,15 @@
                                     <td class="align-middle">
                                         <span class="fw-bold text-dark">{{ $user->name }}</span>
                                     </td>
-                                    <td class="align-middle">
+                                    <td class="text-center">
                                         @if ($user->admin)
                                             <a href="{{ route('user.not_admin', ['id' => $user->id]) }}"
-                                                class="btn btn-xs btn-soft-danger waves-effect waves-light">
+                                                class="btn btn-sm btn-outline-danger">
                                                 <i class="bx bx-user-x"></i> Remove Admin
                                             </a>
                                         @else
                                             <a href="{{ route('user.admin', ['id' => $user->id]) }}"
-                                                class="btn btn-xs btn-soft-success waves-effect waves-light">
+                                                class="btn btn-sm btn-outline-success">
                                                 <i class="bx bx-user-check"></i> Make Admin
                                             </a>
                                         @endif
@@ -85,4 +85,6 @@
             </div>
         </div>
     </div>
+
+    @include('admin_panel.includes.confirm_delete')
 @endsection
