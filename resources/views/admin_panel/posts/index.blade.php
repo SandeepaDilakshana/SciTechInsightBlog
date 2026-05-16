@@ -26,13 +26,13 @@
                 </div>
 
                 <div class="table-responsive text-nowrap">
-                    <table class="table mb-0 border table-centered table-nowrap table-hover">
+                    <table class="table mb-0 border table-bordered table-centered table-nowrap table-hover">
                         <thead>
                             <tr>
-                                <th>Image</th>
-                                <th>Title</th>
-                                <th class="text-center">Edit</th>
-                                <th class="text-center">Move to Trash</th>
+                                <th>IMAGE</th>
+                                <th>TITLE</th>
+                                <th class="text-center">EDIT</th>
+                                <th class="text-center">MOVE TO TRASH</th>
                             </tr>
                         </thead>
                         <tbody>
