@@ -31,8 +31,8 @@
                         <thead>
                             <tr>
                                 <th>CATEGORY NAME</th>
-                                <th>EDIT</th>
-                                <th>MOVE TO TRASH</th>
+                                <th class="text-center">EDIT</th>
+                                <th class="text-center">MOVE TO TRASH</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -40,7 +40,7 @@
                                 <tr>
                                     <td>{{ $category->name }}</td>
 
-                                    <td>
+                                    <td class="text-center">
                                         @can('update', $category)
                                             <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal"
                                                 data-bs-target="#editCategoryModal-{{ $category->id }}">
@@ -51,7 +51,7 @@
                                         @endcan
                                     </td>
 
-                                    <td>
+                                    <td class="text-center">
                                         @can('delete', $category)
                                             <a href="{{ route('category.delete', ['id' => $category->id]) }}"
                                                 class="btn btn-sm btn-outline-danger" onclick="confirmDelete(event, this.href)">
