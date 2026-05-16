@@ -46,7 +46,6 @@
                                         class="form-control @error('email') is-invalid @enderror"
                                         placeholder="Enter email address" value="{{ old('email') }}" required>
                                 </div>
-                                <div class="mt-2 form-text text-muted small">Account credentials will be sent to this email.</div>
                             </div>
                         </div>
 
