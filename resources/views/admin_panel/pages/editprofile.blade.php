@@ -66,10 +66,11 @@
                         </div>
 
                         <div class="mb-4 row">
-                            <label class="col-sm-3 col-form-label">About You</label>
+                            <label class="text-white col-sm-3 col-form-label">Content</label>
                             <div class="col-sm-9">
-                                <div id="editor" style="height: 250px; background: #fff;">{!! $user->profile->about !!}</div>
-                                <input type="hidden" name="about" id="content-hidden">
+                                <div id="editor" style="height: 300px; border: 1px solid #ced4da;">
+                                    {!! $user->profile->about !!}</div>
+                                <input type="hidden" name="content" id="content-hidden">
                             </div>
                         </div>
 
@@ -155,4 +156,27 @@
             contentInput.value = quill.root.innerHTML;
         };
     </script>
+
+    <style>
+        #editor .ql-editor {
+            color: white !important;
+            background-color: transparent !important;
+        }
+
+        #editor .ql-editor.ql-blank::before {
+            color: rgba(255, 255, 255, 0.6) !important;
+        }
+
+        .ql-snow .ql-stroke {
+            stroke: white !important;
+        }
+
+        .ql-snow .ql-fill {
+            fill: white !important;
+        }
+
+        .ql-snow .ql-picker {
+            color: white !important;
+        }
+    </style>
 @endsection
