@@ -43,7 +43,7 @@
                                     <td class="text-center align-middle">
                                         @if (Auth::id() == $post->user_id || Auth::user()->admin)
                                             <a href="{{ route('post.restore', ['id' => $post->id]) }}"
-                                               class="text-white btn btn-sm btn-info">
+                                               class="text-white btn btn-sm btn-outline-info">
                                                 <i class="bx bx-undo"></i> Restore
                                             </a>
                                         @else
@@ -54,7 +54,7 @@
                                     <td class="text-center align-middle">
                                         @if (Auth::id() == $post->user_id || Auth::user()->admin)
                                             <a href="{{ route('post.trash', ['id' => $post->id]) }}"
-                                               class="btn btn-sm btn-danger"
+                                               class="btn btn-sm btn-outline-danger"
                                                onclick="confirmDelete(event, this.href)">
                                                 <i class="bx bx-trash"></i> Delete Permanently
                                             </a>
