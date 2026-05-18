@@ -64,9 +64,11 @@
             @include('admin_panel.layouts.header')
             <!-- Header Area -->
 
-            <div class="main-content introduction-farm">
+            <div class="main-content introduction-farm" style="display: flex; flex-direction: column; min-height: calc(100vh - 70px);">
                 <!-- Main Content Area -->
-                @yield('content')
+                <div style="flex: 1 0 auto;">
+                    @yield('content')
+                </div>
                 <!-- Main Content Area -->
 
                 <!-- Footer Area -->
