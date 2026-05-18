@@ -18,10 +18,10 @@
 
         <!-- Left Side Nav -->
         <ul class="left-side-navbar d-flex align-items-center">
-            {{-- <li class="hide-phone app-search">
-                <input type="text" class="form-control" placeholder="Search...">
-                <span class="bx bx-search-alt"></span>
-            </li> --}}
+            <li class="hide-phone">
+                @livewire('global-search')
+                <!--<span class="bx bx-search-alt"></span>-->
+            </li>
         </ul>
     </div>
 
