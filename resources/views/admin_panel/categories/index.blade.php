@@ -27,7 +27,7 @@
                 </div>
 
                 <div class="table-responsive">
-                    <table class="table table-bordered table-nowrap">
+                    <table class="table table-bordered table-nowrap" id="myTable">
                         <thead>
                             <tr>
                                 <th>CATEGORY NAME</th>
@@ -136,6 +136,16 @@
             </div>
         </div>
     </div>
+
+    <script>
+    $(document).ready(function() {
+        $('#myTable').DataTable({
+            "pageLength": 10,
+            "ordering": true,
+            "searching": true
+        });
+    });
+</script>
 
     @include('admin_panel.includes.confirm_delete')
 @endsection
