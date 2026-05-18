@@ -20,7 +20,7 @@
                 </div>
 
                 <div class="table-responsive">
-                    <table class="table table-bordered table-nowrap">
+                    <table class="table table-bordered table-nowrap" id="myTable">
                         <thead>
                             <tr>
                                 <th>TAG NAME</th>
