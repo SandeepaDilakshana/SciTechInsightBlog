@@ -2,7 +2,7 @@
     <div class="left-side-content-area d-flex align-items-center">
         <!-- Mobile Logo -->
         <div class="mobile-logo">
-            <a href="index.html"><img src="{{ asset('admin_template/img/core-img/small-logo.png') }}"
+            <a href="{{ route('dashboard') }}"><img src="{{ asset('admin_template/img/core-img/blogdesktop.png') }}"
                     alt="Mobile Logo"></a>
         </div>
 
