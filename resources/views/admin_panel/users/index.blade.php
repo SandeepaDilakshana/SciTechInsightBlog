@@ -20,19 +20,19 @@
                 </div>
 
                 <div class="table-responsive">
-                    <table class="table mb-0 table-bordered table-hover table-nowrap">
+                    <table class="table mb-0 table-bordered table-hover table-nowrap" id="myTable">
                         <thead>
                             <tr>
-                                <th class="fw-bold">IMAGE</th>
-                                <th class="fw-bold">NAME</th>
-                                <th class="text-center fw-bold">PERMISSIONS</th>
-                                <th class="text-center fw-bold">ACTION</th>
+                                <th class="text-center">IMAGE</th>
+                                <th>NAME</th>
+                                <th class="text-center">PERMISSIONS</th>
+                                <th class="text-center">ACTION</th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse ($users as $user)
                                 <tr>
-                                    <td class="align-middle">
+                                    <td class="text-center">
                                         <img class="shadow-sm rounded-circle"
                                             src="{{ $user->profile ? asset($user->profile->avatar) : asset('uploads/avatars/836.jpg') }}"
                                             alt="{{ $user->name }}" style="width: 45px; height: 45px; object-fit: cover;">

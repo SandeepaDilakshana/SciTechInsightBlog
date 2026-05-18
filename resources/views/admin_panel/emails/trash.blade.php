@@ -18,7 +18,7 @@
                 </div>
 
                 <div class="table-responsive">
-                    <table class="table table-bordered table-nowrap table-hover">
+                    <table class="table table-bordered table-nowrap table-hover" id="myTable">
                         <thead>
                             <tr>
                                 <th>NAME</th>

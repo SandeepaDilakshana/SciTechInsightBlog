@@ -20,7 +20,7 @@
                 </div>
 
                 <div class="table-responsive text-nowrap">
-                    <table class="table mb-0 border table-bordered table-centered table-nowrap table-hover">
+                    <table class="table mb-0 border table-bordered table-centered table-nowrap table-hover" id="myTable">
                         <thead>
                             <tr>
                                 <th>Name</th>

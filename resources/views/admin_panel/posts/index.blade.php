@@ -26,10 +26,10 @@
                 </div>
 
                 <div class="table-responsive text-nowrap">
-                    <table class="table mb-0 border table-bordered table-centered table-nowrap table-hover">
+                    <table class="table mb-0 border table-bordered table-centered table-nowrap table-hover" id="myTable">
                         <thead>
                             <tr>
-                                <th>IMAGE</th>
+                                <th class="text-center">IMAGE</th>
                                 <th>TITLE</th>
                                 <th class="text-center">EDIT</th>
                                 <th class="text-center">MOVE TO TRASH</th>
@@ -38,7 +38,7 @@
                         <tbody>
                             @forelse ($posts as $post)
                                 <tr>
-                                    <td>
+                                    <td class="text-center">
                                         <img class="rounded shadow-sm"
                                              src="{{ asset($post->featured) }}"
                                              alt="{{ $post->title }}"

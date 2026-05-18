@@ -2,7 +2,7 @@
     <div class="left-side-content-area d-flex align-items-center">
         <!-- Mobile Logo -->
         <div class="mobile-logo">
-            <a href="index.html"><img src="{{ asset('admin_template/img/core-img/small-logo.png') }}"
+            <a href="{{ route('dashboard') }}"><img src="{{ asset('admin_template/img/core-img/blogdesktop.png') }}"
                     alt="Mobile Logo"></a>
         </div>
 
@@ -18,10 +18,10 @@
 
         <!-- Left Side Nav -->
         <ul class="left-side-navbar d-flex align-items-center">
-            {{-- <li class="hide-phone app-search">
-                <input type="text" class="form-control" placeholder="Search...">
-                <span class="bx bx-search-alt"></span>
-            </li> --}}
+            <li class="hide-phone">
+                @livewire('global-search')
+                <!--<span class="bx bx-search-alt"></span>-->
+            </li>
         </ul>
     </div>
 
