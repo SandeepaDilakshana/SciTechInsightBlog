@@ -22,6 +22,8 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
+    @livewireStyles
+
 </head>
 
 <body>
@@ -44,7 +46,8 @@
             @include('admin_panel.layouts.header')
             <!-- Header Area -->
 
-            <div class="main-content introduction-farm" style="display: flex; flex-direction: column; min-height: calc(100vh - 70px);">
+            <div class="main-content introduction-farm"
+                style="display: flex; flex-direction: column; min-height: calc(100vh - 70px);">
                 <!-- Main Content Area -->
                 <div style="flex: 1 0 auto;">
                     @yield('content')
@@ -78,6 +81,8 @@
     <script src="{{ asset('admin_template/js/intro.min.js') }}"></script>
     <script src="{{ asset('admin_template/js/dashboard-custom.js') }}"></script>
     <script src="{{ asset('admin_template/js/intro-active.js') }}"></script>
+
+    @livewireScripts
 
 </body>
 
