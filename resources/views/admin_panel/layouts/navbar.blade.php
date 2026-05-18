@@ -45,7 +45,7 @@
                 </li>
 
                 <li class="{{ Route::is('env_view') ? 'active' : '' }}">
-                    <a href="{{ route('env_view') }}"><i class='bx bx-list-ul'></i><span>Update env</span></a>
+                    <a href="{{ route('env_view') }}"><i class='bx bx-list-ul'></i><span>Email Configuration</span></a>
                 </li>
 
                 <li class="{{ Route::is('settings*') ? 'active' : '' }}">
