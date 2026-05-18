@@ -72,6 +72,7 @@
                                     <textarea name="message" rows="6" class="form-control" id="message" placeholder="Your Message" required=""></textarea>
                                 </fieldset>
                             </div>
+                            <div class="cf-turnstile col-lg-12" data-sitekey="{{ env('TURNSTILE_SITE_KEY') }}"></div>
                             <div class="col-lg-12">
                                 <fieldset>
                                     <button type="submit" id="form-submit" class="filled-button">Send Message</button>
@@ -96,3 +97,5 @@
         </div>
     </div>
 </div>
+
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer nonce="GmunG9Dg4vvGaTAP1E1yfG"></script>
