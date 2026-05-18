@@ -18,10 +18,10 @@
                 </div>
 
                 <div class="table-responsive">
-                    <table class="table table-bordered table-hover table-nowrap">
+                    <table class="table table-bordered table-hover table-nowrap" id="myTable">
                         <thead>
                             <tr>
-                                <th>IMAGE</th>
+                                <th class="text-center">IMAGE</th>
                                 <th>USER NAME</th>
                                 <th class="text-center">RESTORE</th>
                                 <th class="text-center">DELETE PERMANENTLY</th>
@@ -30,7 +30,7 @@
                         <tbody>
                             @forelse ($users as $user)
                                 <tr>
-                                    <td>
+                                    <td class="text-center">
                                         <img class="rounded shadow-sm"
                                             src="{{ $user->profile ? asset($user->profile->avatar) : asset('uploads/avatars/836.jpg') }}"
                                             alt="{{ $user->name }}" style="width: 50px; height: 50px; object-fit: cover;">
