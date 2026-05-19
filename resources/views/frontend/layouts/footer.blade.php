@@ -91,7 +91,9 @@
         <div class="row">
             <div class="col-md-12">
                 <p>
-                    Copyright © 2026
+                    {{ date('Y') }} &copy; All rights reserved
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    Developed by Sandeepa Dilakshana
                 </p>
             </div>
         </div>
