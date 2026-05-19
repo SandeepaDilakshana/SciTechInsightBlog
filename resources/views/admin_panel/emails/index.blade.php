@@ -39,15 +39,13 @@
                                         <span class="text-muted">{{ $message->email }}</span>
                                     </td>
                                     <td>
-                                        {{-- පණිවිඩය දිග වැඩි නම් කෙටි කර පෙන්වීමට (Optional) --}}
                                         <span title="{{ $message->message }}">
                                             {{ Str::limit($message->message, 50) }}
                                         </span>
                                     </td>
                                     <td class="text-center">
                                         <a href="{{ route('messages.delete', ['id' => $message->id]) }}"
-                                           class="btn btn-sm btn-outline-danger"
-                                           onclick="confirmDelete(event, this.href)">
+                                            class="btn btn-sm btn-outline-danger" onclick="confirmDelete(event, this.href)">
                                             <i class="bx bx-trash"></i> Move to Trash
                                         </a>
                                     </td>
