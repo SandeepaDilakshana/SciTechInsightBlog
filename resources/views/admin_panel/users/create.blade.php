@@ -20,7 +20,7 @@
 
                     <hr class="mb-4">
 
-                    @include('includes.errors')
+                    @include('admin_panel.includes.errors')
 
                     <form action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
